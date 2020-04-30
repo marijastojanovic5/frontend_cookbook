@@ -3,14 +3,13 @@ import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 class RecipeDetailsPage extends React.Component {
 render(){
-    return(
-        <div>RecipeDetails</div>
+  return !this.props.recipe ? null : (
+        <div>{this.props.recipe.title}</div>
     )
 }
 }
 const mapStateToProps=(store,ownProps)=>({
-    recipe: store.recipe.find(
-        recipe=>{return recipe.id === ownProps.match.params.recipeId}
-    )
+   recipe: store.recipes.find(rec=>rec.id === parseInt(ownProps.match.params.id))
+    
 })
 export default connect(mapStateToProps)(RecipeDetailsPage)

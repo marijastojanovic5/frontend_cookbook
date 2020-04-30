@@ -12,4 +12,4 @@ const mapStateToProps=(store,ownProps)=>({
    recipe: store.recipes.find(rec=>rec.id === parseInt(ownProps.match.params.id))
     
 })
-export default connect(mapStateToProps)(RecipeDetailsPage)
+export default withRouter(connect(mapStateToProps)(RecipeDetailsPage))

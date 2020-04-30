@@ -1,5 +1,6 @@
 import React from "react"
 import RecipeList from "./RecipeList"
+import SearchBar from './SearchBar'
 import {connect} from "react-redux"
 import {withRouter} from "react-router-dom"
 import {fetchingRecipes} from "../redux/actionCreators"
@@ -10,7 +11,10 @@ class RecipeContainer extends React.Component {
       }
     render(){
         return (
-            <div><RecipeList/></div>
+            <div>
+            <SearchBar />
+            <RecipeList/>
+            </div>
         )
     }
 }

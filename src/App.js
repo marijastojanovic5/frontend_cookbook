@@ -1,6 +1,7 @@
 import React from 'react';
 import {BrowserRouter,Route} from "react-router-dom"
 import RecipeContainer from "./components/RecipeContainer"
+import RecipeDetailsPage from "./components/RecipeDetailsPage"
 
 import Login from "./components/login"
 
@@ -10,7 +11,8 @@ class App extends React.Component {
       <div>
         <BrowserRouter>
         <Route exact path ="/" component={Login}/>
-        <Route exact path="/allrecipes" component={RecipeContainer}/>
+        <Route exact path="/recipes" component={RecipeContainer}/>
+        <Route exact path="/recipes/:id" component={RecipeDetailsPage}/>
       </BrowserRouter>
       </div>
   )

@@ -1,8 +1,10 @@
-const FETCHED_RECIPES= "FETCHED_RECIPES"
 const URL = "http://localhost:3000/recipes" 
 
 function fetchedRecipes(recipeArray){
-    return {type: FETCHED_RECIPES, payload: recipeArray}
+    return {type: "FETCHED_RECIPES", payload: recipeArray}
+}
+function onSearch(newSearchTerm){
+    return {type: "CHANGE_TEXT", payload: newSearchTerm}
 }
 function fetchingRecipes(){
     return (dispatch)=>{
@@ -14,4 +16,4 @@ function fetchingRecipes(){
 }
 }
 
-export {fetchingRecipes,FETCHED_RECIPES}
+export {fetchingRecipes,fetchedRecipes,onSearch}

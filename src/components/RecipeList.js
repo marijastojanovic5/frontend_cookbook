@@ -12,4 +12,4 @@ const RecipeList = props => {
 const mapStateToProps = (store) => ({
   recipes: store.recipes
 })
-export default connect(mapStateToProps)(RecipeList);
+export default connect(mapStateToProps)(RecipeList)

@@ -1,25 +1,15 @@
-import React from "react"
-import RecipeList from "./RecipeList"
-import SearchBar from './SearchBar'
-import {connect} from "react-redux"
-import {withRouter} from "react-router-dom"
-import {fetchingRecipes} from "../redux/actionCreators"
-
+import React from "react";
+import RecipeList from "./RecipeList";
+import SearchBar from "./SearchBar";
 class RecipeContainer extends React.Component {
-    componentDidMount(){
-        this.props.fetchingRecipes()
-      }
-    render(){
-        return (
-            <div>
-            <SearchBar />
-            <RecipeList/>
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div>
+        <SearchBar />
+        <RecipeList />
+      </div>
+    );
+  }
 }
+export default RecipeContainer
 
-const mapDispatchToProps = (dispatch) => ({
-    fetchingRecipes: () => {dispatch(fetchingRecipes())}
-  })
-export default withRouter(connect(null,mapDispatchToProps)(RecipeContainer))

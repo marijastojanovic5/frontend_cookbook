@@ -1,19 +1,18 @@
 import React from "react";
 import { BrowserRouter, Route, withRouter } from "react-router-dom";
 import RecipeContainer from "./components/RecipeContainer";
-import NavBar from "./components/NavBar"
 import RecipeDetailsPage from "./components/RecipeDetailsPage";
 import RecipeForm from "./components/RecipeForm";
-import css from './index.css'
-import SignUp from "./components/SignUp"
 import Login from "./components/login";
+import SignUp from "./components/SignUp";
+import NavBar from './components/NavBar'
 import { connect } from "react-redux";
-import { fetchingRecipes,fetchingIngredients } from "./redux/actionCreators";
-
+import { fetchingRecipes, fetchingIngredients, fetchingUser } from "./redux/actionCreators";
 class App extends React.Component {
   componentDidMount() {
     this.props.fetchingRecipes()
     this.props.fetchingIngredients()
+    this.props.fetchingUser()
   }
   render() {
     return (
@@ -29,15 +28,18 @@ class App extends React.Component {
     );
   }
 }
+const mapStateToProps = store => ({
+  user: store.user
+})
 const mapDispatchToProps = dispatch => ({
   fetchingRecipes: () => {
     dispatch(fetchingRecipes())
   },
-    fetchingIngredients: () => {
+  fetchingIngredients: () => {
     dispatch(fetchingIngredients())
-
+  },
+  fetchingUser: () => {
+    dispatch(fetchingUser())
   }
-    
-  }
-);
-export default withRouter(connect(null, mapDispatchToProps)(App));
+})
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))

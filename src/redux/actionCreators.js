@@ -1,5 +1,6 @@
 const URL = "http://localhost:3000/recipes" 
 const URLING="http://localhost:3000/ingredients"
+const USERS="http://localhost:3000/users"
 
 function fetchedRecipes(recipeArray){
     return {type: "FETCHED_RECIPES", payload: recipeArray}
@@ -12,6 +13,9 @@ function fetchedIngredients(ingredientArray){
 }
 function addIngredient(newIngredient){
     return {type: "ADD_INGREDIENT",payload: newIngredient}
+}
+function fetchedUser(user){
+    return {type: "FETCHED_USER",action: user}
 }
 function fetchingIngredients(){
     return dispatch => {
@@ -32,5 +36,14 @@ function fetchingRecipes(){
     })
 }
 }
+function fetchingUser(){
+    return dispatch=>{
+        fetch(USERS)
+        .then(res=>res.json())
+        .then(userArray=>{
+        dispatch(fetchedUser(userArray))
+    })
+    }
+}
 
-export {fetchingRecipes,fetchedRecipes,onSearch,fetchedIngredients,fetchingIngredients, addIngredient}
+export {fetchingRecipes,fetchedRecipes,onSearch,fetchedIngredients,fetchingIngredients, addIngredient,fetchedUser,fetchingUser}

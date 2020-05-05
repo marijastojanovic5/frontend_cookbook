@@ -1,5 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import {connect} from "react-redux"
+import {signUp} from "../redux/actionCreators"
 class SignUp extends React.Component{
     state ={
         firstName: "",
@@ -15,22 +17,8 @@ class SignUp extends React.Component{
         }
         handleSignUpSubmit=(e)=>{
             e.preventDefault()
-            fetch("http://localhost:3000/users",{
-                method: "POST",
-                headers: {
-                    "Content-Type" : "application/json",
-                    "Accept": "application/json"
-                },
-                body: JSON.stringify({
-                    firstName: this.state.firstName,
-                    lastName: this.state.lastName,
-                    username: this.state.username,
-                    password: this.state.password
-                })
-                }).then(res =>res.json())
-                .then(user=>{
-                    this.props.updateCurrentUser(user)
-                })
+            this.props.onSubmit(this.state)
+           
         }
     render(){
         return(
@@ -61,4 +49,17 @@ class SignUp extends React.Component{
         )
     }
 }
-export default SignUp
+const mapStateToProps=state=>{
+    return {
+        currentUser: state.user
+    }
+      
+    
+}
+const mapDispatchToProps=dispatch=> {
+    return {
+        onSubmit: (user)=>dispatch(signUp(user))
+
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp)

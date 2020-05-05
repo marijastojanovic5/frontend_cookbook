@@ -19,6 +19,29 @@ state = {
       <div>
         <p>Recipe Form</p>
         <form>
+          <select >
+                {this.props.ingredients.map(ing =>
+                <option value={ing.name}>{ing.name}</option>
+                )}
+              </select>
+              <select>
+                {this.props.ingredients.map(ing =>
+                <option value={ing.unit}>{ing.unit}</option>
+                )}
+              </select>
+              <select>
+                <option>0.5</option>
+                <option>1.0</option>
+                <option>1.5</option>
+                <option>2.0</option>
+                <option>2.5</option>
+                <option>3.0</option>
+                <option>3.5</option>
+                <option>4.0</option>
+                <option>4.5</option>
+                <option>5.0</option>
+
+              </select>
           <div className="form-group">
             <label>Recipe Title: </label>
             <input
@@ -102,6 +125,6 @@ state = {
   }
 }
 const mapStateToProps = (store) => ({
-  ingredients: store.recipes
+  ingredients: store.ingredients
 })
 export default withRouter(connect(mapStateToProps)(RecipeForm));

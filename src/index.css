@@ -1,0 +1,11 @@
+.added-ingredient-div {
+border-style:  solid;
+}
+.fixed-nav-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    height: 50px;
+  }

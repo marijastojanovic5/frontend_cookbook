@@ -5,6 +5,7 @@ import NavBar from "./components/NavBar"
 import RecipeDetailsPage from "./components/RecipeDetailsPage";
 import RecipeForm from "./components/RecipeForm";
 import css from './index.css'
+import SignUp from "./components/SignUp"
 import Login from "./components/login";
 import { connect } from "react-redux";
 import { fetchingRecipes,fetchingIngredients } from "./redux/actionCreators";
@@ -19,7 +20,7 @@ class App extends React.Component {
       <div>
         <BrowserRouter>
           {/* <NavBar/> */}
-          <Route exact path="/" component={Login} />
+          <Route exact path="/" component={SignUp} />
           <Route exact path="/recipes" component={RecipeContainer} />
           <Route exact path="/recipes/:id" component={RecipeDetailsPage} />
           <Route exact path="/addnewrecipe" component={RecipeForm} />

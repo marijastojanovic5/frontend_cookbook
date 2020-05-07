@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, withRouter } from "react-router-dom";
 import RecipeContainer from "./components/RecipeContainer";
 import RecipeDetailsPage from "./components/RecipeDetailsPage";
+import UsersProfile from "./components/UsersProfile"
 import RecipeForm from "./components/RecipeForm";
 import Login from "./components/login";
 import SignUp from "./components/SignUp";
@@ -23,11 +24,15 @@ class App extends React.Component {
           <Route exact path="/recipes" component={RecipeContainer} />
           <Route exact path="/recipes/:id" component={RecipeDetailsPage} />
           <Route exact path="/addnewrecipe" component={RecipeForm} />
+          <Route exact path="/usersprofile" component={UsersProfile}/>
         </BrowserRouter>
       </div>
     );
   }
 }
+ const mapStateToProps=store=>({
+  user: store.user
+})
 
 const mapDispatchToProps = dispatch => ({
   fetchingRecipes: () => {
@@ -38,4 +43,4 @@ const mapDispatchToProps = dispatch => ({
   }
   
 })
-export default withRouter(connect(null, mapDispatchToProps)(App))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))

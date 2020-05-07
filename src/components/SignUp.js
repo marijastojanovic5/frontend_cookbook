@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {Link,Redirect} from 'react-router-dom'
 import {connect} from "react-redux"
 import {signUp} from "../redux/actionCreators"
 class SignUp extends React.Component{
@@ -21,6 +21,9 @@ class SignUp extends React.Component{
            
         }
     render(){
+        if (this.props.redirect) {
+            return <Redirect to="/usersprofile" />; 
+          }
         return(
             <div className="bg-img">
                 <div className="container-fluid login-container">
@@ -51,7 +54,8 @@ class SignUp extends React.Component{
 }
 const mapStateToProps=state=>{
     return {
-        currentUser: state.user
+        currentUser: state.user,
+        redirect: state.redirect
     }
       
     

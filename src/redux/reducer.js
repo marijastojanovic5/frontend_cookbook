@@ -41,13 +41,25 @@ const currentUserReducer=(oldState=null,action)=>{
     }
 }
 
+const redirectReducer = (oldState = false, action) => {
+    switch (action.type) {
+      case "FETCHED_USER":
+        return true
+      case "REDIRECT":
+        return false
+      default:
+        return oldState
+    }
+  }
+
 
     const rootReducer= combineReducers({
         recipes: recipeReducer,
         searchText: searchTextReducer,
         ingredients: ingredientReducer,
         newIngredient: addIngredientReducer,
-        user: currentUserReducer
+        user: currentUserReducer,
+        redirect: redirectReducer
     })
 
 export  default rootReducer

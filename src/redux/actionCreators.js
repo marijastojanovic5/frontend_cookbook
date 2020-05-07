@@ -16,6 +16,10 @@ function addIngredient(newIngredient){
 function login(user){
     return {type: "FETCHED_USER",payload: user}
 }
+function resetRedirect() {
+    return { type: "REDIRECT" };
+  }
+  
 
 
 function fetchingIngredients(){
@@ -54,4 +58,4 @@ function signUp({firstName,lastName,username, password }){
     }
 }
 
-export {fetchingRecipes,fetchedRecipes,onSearch,fetchedIngredients,fetchingIngredients, addIngredient,signUp,login}
+export {fetchingRecipes,fetchedRecipes,onSearch,fetchedIngredients,fetchingIngredients, addIngredient,signUp,login,resetRedirect}

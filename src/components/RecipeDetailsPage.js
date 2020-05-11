@@ -10,7 +10,7 @@ class RecipeDetails extends React.Component {
     return !this.props.recipe ? null : (
       <div>
         <h3>{this.props.recipe.title}</h3>
-        <button onClick={this.props.fav}>Add to favorties</button>
+        <button onClick={()=>this.props.fav(this.props.recipe,this.props.user.user)}>Add to favorties</button>
         <div>
           <p>Dairy Free: {this.props.recipe.dairy_free ? "Yes" : "No"}</p>
           <p>Gluten Free: {this.props.recipe.gluten_free ? "Yes" : "No"}</p>
@@ -32,12 +32,13 @@ const mapStateToProps = (store, ownProps) => ({
   recipe: store.recipes.find(
     recipe => recipe.id === parseInt(ownProps.match.params.id)
   ),
-  ingredients: store.ingredients
+  ingredients: store.ingredients,
+  user: store.user
 });
 
  const mapDispatchToProps=dispatch=>{
    return{
-     fav: recipe=>dispatch(favorite(recipe))
+     fav: (recipe,user)=>dispatch(favorite(recipe,user))
      
    }
  }

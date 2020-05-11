@@ -1,6 +1,8 @@
 const URL = "http://localhost:3000/recipes" 
 const URLING="http://localhost:3000/ingredients"
 
+
+
 function fetchedRecipes(recipeArray){
     return {type: "FETCHED_RECIPES", payload: recipeArray}
 }
@@ -19,8 +21,8 @@ function login(user){
 function resetRedirect() {
     return { type: "REDIRECT" };
   }
-function favoriteRecipe(recipe){
-    return { type: "FAVORITE",payload: recipe };
+function favoriteRecipe(recipeId){
+    return { type: "FAVORITE",payload: recipeId };
 
 }
   
@@ -45,9 +47,24 @@ function fetchingRecipes(){
     })
 }
 }
-function favorite(recipe){
-
-}
+function favorite(recipe, user) {
+    
+    let favRecipe = { recipe_id: recipe.id, user_id: user.id}
+    return dispatch => {
+      fetch("http://localhost:3000/favoriterecipe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(favRecipe)
+          })
+          .then(res => res.json())
+          .then(data => {
+            console.log(data)
+      });
+    };
+  }
 function signUp({firstName,lastName,username, password }){
     return dispatch=>{
         fetch("http://localhost:3000/users",{

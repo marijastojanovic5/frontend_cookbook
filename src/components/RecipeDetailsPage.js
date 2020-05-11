@@ -1,5 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
+import {favorite} from '../redux/actionCreators'
+
+
 import { withRouter } from "react-router-dom";
 class RecipeDetails extends React.Component {
   render() {
@@ -7,6 +10,7 @@ class RecipeDetails extends React.Component {
     return !this.props.recipe ? null : (
       <div>
         <h3>{this.props.recipe.title}</h3>
+        <button onClick={this.props.fav}>Add to favorties</button>
         <div>
           <p>Dairy Free: {this.props.recipe.dairy_free ? "Yes" : "No"}</p>
           <p>Gluten Free: {this.props.recipe.gluten_free ? "Yes" : "No"}</p>
@@ -30,4 +34,11 @@ const mapStateToProps = (store, ownProps) => ({
   ),
   ingredients: store.ingredients
 });
-export default withRouter(connect(mapStateToProps)(RecipeDetails));
+
+ const mapDispatchToProps=dispatch=>{
+   return{
+     fav: recipe=>dispatch(favorite(recipe))
+     
+   }
+ }
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(RecipeDetails));

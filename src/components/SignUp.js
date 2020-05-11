@@ -22,8 +22,9 @@ class SignUp extends React.Component{
         }
     render(){
         if (this.props.redirect) {
-            return <Redirect to="/usersprofile" />; 
-          }
+            return <Redirect to="/usersprofile"/> 
+      } 
+                     
         return(
             <div className="bg-img">
                 <div className="container-fluid login-container">
@@ -51,19 +52,15 @@ class SignUp extends React.Component{
             </div>
         )
     }
-}
-const mapStateToProps=state=>{
-    return {
+    }
+ const mapStateToProps = state => ({
         currentUser: state.user,
         redirect: state.redirect
-    }
-      
-    
-}
-const mapDispatchToProps=dispatch=> {
-    return {
-        onSubmit: (user)=>dispatch(signUp(user))
+    })
 
+    const mapDispatchToProps=dispatch=> {
+        return {
+        onSubmit: user=>dispatch(signUp(user))
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(SignUp)

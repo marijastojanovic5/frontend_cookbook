@@ -51,6 +51,14 @@ const redirectReducer = (oldState = false, action) => {
         return oldState
     }
   }
+  const favoriteRecipeReducer=(oldState=[],action)=>{
+      switch (action.type){
+          case 'FAVORITE':
+              return [...oldState,action.payload]
+              default:
+                  return oldState
+      }
+  }
 
 
     const rootReducer= combineReducers({
@@ -59,7 +67,8 @@ const redirectReducer = (oldState = false, action) => {
         ingredients: ingredientReducer,
         newIngredient: addIngredientReducer,
         user: currentUserReducer,
-        redirect: redirectReducer
+        redirect: redirectReducer,
+        favorites: favoriteRecipeReducer
     })
 
 export  default rootReducer

@@ -3,7 +3,8 @@ import {connect} from "react-redux"
 import {withRouter} from "react-router-dom"
 const UsersProfile=(props)=>{
     return(
-        <div>User</div>
+        <div>Welcome{props.user.user.first_name}
+        </div>
 
     )
 }

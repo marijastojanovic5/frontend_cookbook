@@ -19,6 +19,10 @@ function login(user){
 function resetRedirect() {
     return { type: "REDIRECT" };
   }
+function favoriteRecipe(recipe){
+    return { type: "FAVORITE",payload: recipe };
+
+}
   
 
 
@@ -41,6 +45,9 @@ function fetchingRecipes(){
     })
 }
 }
+function favorite(recipe){
+
+}
 function signUp({firstName,lastName,username, password }){
     return dispatch=>{
         fetch("http://localhost:3000/users",{
@@ -58,4 +65,4 @@ function signUp({firstName,lastName,username, password }){
     }
 }
 
-export {fetchingRecipes,fetchedRecipes,onSearch,fetchedIngredients,fetchingIngredients, addIngredient,signUp,login,resetRedirect}
+export {fetchingRecipes,fetchedRecipes,onSearch,fetchedIngredients,fetchingIngredients, addIngredient,signUp,login,resetRedirect,favoriteRecipe,favorite}

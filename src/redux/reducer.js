@@ -54,9 +54,9 @@ const redirectReducer = (oldState = false, action) => {
   const favoriteRecipeReducer=(oldState=[],action)=>{
       switch (action.type){
           case 'FAVORITE':
-              return [...oldState,action.payload]
-              default:
-                  return oldState
+            return [...oldState, action.payload]
+          default:
+            return oldState
       }
   }
 

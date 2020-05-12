@@ -14,6 +14,7 @@ class App extends React.Component {
     this.props.fetchingRecipes()
     this.props.fetchingIngredients()
     
+    
   }
   render() {
     return (
@@ -33,6 +34,8 @@ class App extends React.Component {
 }
  const mapStateToProps=store=>({
   user: store.user
+  
+  
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -42,6 +45,8 @@ const mapDispatchToProps = dispatch => ({
   fetchingIngredients: () => {
     dispatch(fetchingIngredients())
   }
+ 
+
   
 })
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))

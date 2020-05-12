@@ -10,7 +10,7 @@ class Login extends React.Component {
 
     handleChange=(e)=>{
     let copyState={...this.state}
-    copyState[e.target.name]=[e.target.value]
+    copyState[e.target.name]=e.target.value
     this.setState(copyState)
     }
     
@@ -49,7 +49,8 @@ class Login extends React.Component {
 }
 const mapStateToProps=state=>({
     user: state.user,
-    redirect: state.redirect
+    redirect: state.redirect,
+    favorites: state.favorites
 })
 
 const mapDispatchToProps=dispatch=>{

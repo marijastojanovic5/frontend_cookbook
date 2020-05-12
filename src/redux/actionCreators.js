@@ -21,8 +21,8 @@ function login(user){
 function resetRedirect() {
     return { type: "REDIRECT" };
   }
-function favoriteRecipe(recipeId){
-    return { type: "FAVORITE",payload: recipeId };
+function favoriteRecipe(recipe){
+    return { type: "FAVORITE",payload: recipe };
 
 }
   
@@ -46,7 +46,7 @@ function fetchingRecipes(){
 }
 }
 function favorite(recipe, user) {
-    
+   
     let favRecipe = { recipe_id: recipe.id, user_id: user.id}
     return dispatch => {
       fetch("http://localhost:3000/favoriterecipe", {
@@ -59,7 +59,8 @@ function favorite(recipe, user) {
           })
           .then(res => res.json())
           .then(recipe => {
-            dispatch(favoriteRecipe(recipe))
+             
+        dispatch(favoriteRecipe(recipe))
       });
     };
   }
@@ -81,7 +82,7 @@ function signUp({firstName,lastName,username, password }){
 }
 function logginIn({username, password}){
     return dispatch=>{
-        fetch("http://localhost:3000/users" , {
+        fetch("http://localhost:3000/login" , {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

@@ -5,10 +5,8 @@ const NavBar =(props)=>{
         <div className ="fixed-nav-bar">
             <ul>
             <li><Link to='/about'>About</Link></li>
-              <li><Link to='/pictureoftheday'>NASA Picture Of The Day</Link></li>
-              <li><Link to='/marsweather'>Mars Weather</Link></li>
-              <li><Link to="/marsrover">Mars Rover</Link></li>
-              <li><Link to="/closeapproach">Close Approach Data</Link></li>
+              <li><Link to='/recipes'>All Recipes</Link></li>
+              <li><Link to='/addnewrecipe'>Add new Recipe</Link></li>
               <li><Link to="/profile">Profile</Link></li>
              {props.match.path === '/login' ? 
               <li><Link to="/login">Login</Link></li>

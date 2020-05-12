@@ -79,5 +79,22 @@ function signUp({firstName,lastName,username, password }){
     })
     }
 }
+function logginIn({username, password}){
+    return dispatch=>{
+        fetch("http://localhost:3000/users" , {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                 Accept: "application/json" 
+            },
+            body: JSON.stringify({username, password})
+        })
+        .then(res=>res.json())
+        .then(user=>{
+            dispatch(login(user))
+            
+        })
+     }
+}
 
-export {fetchingRecipes,fetchedRecipes,onSearch,fetchedIngredients,fetchingIngredients, addIngredient,signUp,login,resetRedirect,favoriteRecipe,favorite}
+export {fetchingRecipes,fetchedRecipes,onSearch,fetchedIngredients,fetchingIngredients, addIngredient,signUp,login,resetRedirect,favoriteRecipe,favorite,logginIn}

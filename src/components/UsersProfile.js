@@ -5,8 +5,8 @@ const UsersProfile=(props)=>{
     return(
         <div>
       Welcome {props.user.user.first_name}
-      My Favorite Recipes:{" "}
-      {props.favoriteRecipes.map(recipe => (
+      My Favorite Recipes:
+      {props.favorites.map(recipe => (
         <p>{recipe.title}</p>
       ))}
     </div>

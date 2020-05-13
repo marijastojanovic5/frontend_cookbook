@@ -1,6 +1,20 @@
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import { addingRecipe } from "../redux/actionCreators";
+// <select
+//   value={this.state.name}
+//   name={this.state.ingredients}
+//   onChange={this.recipeHandler}
+// >
+//   <option defaultValue="value">Select Ingredient</option>
+//
+//   {this.props.ingredients.map(ing => (
+//     <option key={ing.id} value={ing.name}>
+//       {ing.name}
+//     </option>
+//   ))}
+// </select>
 class RecipeForm extends React.Component {
   state = {
     title: "",
@@ -11,40 +25,51 @@ class RecipeForm extends React.Component {
     gluten: false,
     dairy: false,
     vegetarian: false,
-    vegan: false,
-    name: ""
+    vegan: false
   };
-  nameHandler = e => {
-    this.setState({name: e.target.value, ingredients: [...this.state.ingredients, e.target.value ]});
+  recipeHandler = e => {
+    let copyState = { ...this.state };
+    copyState[e.target.name] = e.target.value;
+    this.setState(copyState);
+  };
+  veganHandler = e => {
+    let toggle = this.state.name ? true : false;
+    this.setState({ vegan: !toggle });
+  };
+  vegetarianHandler = e => {
+    let toggle = this.state.vegetarian ? true : false;
+    this.setState({ vegetarian: !toggle });
+  };
+  glutenHandler = e => {
+    let toggle = this.state.gluten ? true : false;
+    this.setState({ gluten: !toggle });
+  };
+  dairyHandler = e => {
+    let toggle = this.state.dairy ? true : false;
+    this.setState({ dairy: !toggle });
+  };
+  onRecipeSubmit = e => {
+    e.preventDefault()
+    this.props.onSubmit(this.state)
   };
   render() {
     console.log("Recipe Form:", this.state);
     return !this.props.ingredients ? null : (
       <div>
-        <h2>Add a new Recipe!</h2>
-        <div className="added-ingredient-div">
-          <h4>Added Ingredients:</h4>
-          {this.state.ingredients.map(ing => ing)}
-        </div>
-        <form>
-          <select
-            value={this.state.name}
-            onChange={e => this.nameHandler(e)}
-          >
-            <option defaultValue="value">Select Ingredient</option>
-            {this.props.ingredients.map(ing => (
-              <option key={ing.id} value={ing.name}>
-                {ing.name}
-              </option>
-            ))}
-          </select>
-          <div>
+        <form onSubmit={this.onRecipeSubmit}>
+          <h2>Add a new Recipe!</h2>
+          <div className="added-ingredient-div">
+            <h4>Added Ingredients:</h4>
+            {this.state.ingredients.map(ing => ing)}
           </div>
+          <div></div>
           <div className="form-group">
             <label>Recipe Title: </label>
             <input
               className="form-control form-control-sm"
               type="text"
+              name="title"
+              onChange={this.recipeHandler}
               placeholder="Recipe Title"
               style={{ width: 200 }}
             />
@@ -52,6 +77,8 @@ class RecipeForm extends React.Component {
             <input
               className="form-control form-control-sm"
               type="text"
+              name="cookTime"
+              onChange={this.recipeHandler}
               placeholder="cooktime"
               style={{ width: 200 }}
             />
@@ -59,12 +86,16 @@ class RecipeForm extends React.Component {
             <input
               className="form-control form-control-sm"
               type="text"
+              name="picture"
+              onChange={this.recipeHandler}
               placeholder="add image"
               style={{ width: 200 }}
             />
             <label>Instructions: </label>
             <textarea
               className="form-control"
+              name="instructions"
+              onChange={this.recipeHandler}
               id="exampleFormControlTextarea1"
               rows="3"
               style={{ width: 200 }}
@@ -74,8 +105,9 @@ class RecipeForm extends React.Component {
             <input
               className="form-check-input"
               type="checkbox"
+              onClick={this.dairyHandler}
               id="inlineCheckbox1"
-              value="Dairy Free"
+              value={this.state.dairy}
             />
             <label className="form-check-label" htmlFor="inlineCheckbox1">
               Dairy Free
@@ -83,9 +115,10 @@ class RecipeForm extends React.Component {
             <div className="form-check form-check-inline">
               <input
                 className="form-check-input"
+                onClick={this.glutenHandler}
                 type="checkbox"
                 id="inlineCheckbox1"
-                value="Gluten Free"
+                value={this.state.gluten}
               />
               <label className="form-check-label" htmlFor="inlineCheckbox1">
                 Gluten Free
@@ -94,9 +127,10 @@ class RecipeForm extends React.Component {
             <div className="form-check form-check-inline">
               <input
                 className="form-check-input"
+                onClick={this.vegetarianHandler}
                 type="checkbox"
                 id="inlineCheckbox1"
-                value="Vegetarian"
+                value={this.state.vegetarian}
               />
               <label className="form-check-label" htmlFor="inlineCheckbox1">
                 Vegetarian
@@ -105,9 +139,10 @@ class RecipeForm extends React.Component {
             <div className="form-check form-check-inline">
               <input
                 className="form-check-input"
+                onClick={this.veganHandler}
                 type="checkbox"
                 id="inlineCheckbox1"
-                value="Vegan"
+                value={this.state.vegan}
               />
               <label className="form-check-label" htmlFor="inlineCheckbox1">
                 Vegan
@@ -115,19 +150,25 @@ class RecipeForm extends React.Component {
             </div>
           </div>
           <div>
-            <button>Submit Recipe</button>
+            <button type="submit">Submit Recipe</button>
           </div>
         </form>
       </div>
     );
   }
 }
-const mapStateToProps = store => ({
-  ingredients: store.ingredients
+const mapStateToProps = state => ({
+  ingredients: state.ingredients,
+  recipes: state.recipes
 });
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     ingredients: () => {dispatch}
-//   }
-// }
-export default withRouter(connect(mapStateToProps)(RecipeForm));
+const mapDispatchToProps = dispatch => {
+  return {
+    onSubmit: recipe => dispatch(addingRecipe(recipe))
+  };
+};
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(RecipeForm)
+);

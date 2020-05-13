@@ -85,11 +85,22 @@ function signUp({firstName,lastName,username, password }){
     })
     }
 }
-// function addingRecipe({title,cookTime, instructins, ingredients, picture,gluten,dairy,vegan,vegetarian}){
-//     return dispatch=>{
-//         fetch()
-//     }
-// }
+function addingRecipe({ title, cookTime, instructions, ingredients, picture, gluten, dairy, vegan, vegetarian }) {
+    return dispatch => {
+      fetch('http://localhost:3000/recipes', {
+        method: "POST",
+        headers: {
+          "Content-Type": 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify({ title, cookTime, instructions, ingredients, picture, gluten, dairy, vegan, vegetarian })
+      })
+      .then(res => res.json())
+      .then(recipe => {
+        dispatch(addNewRecipe(recipe))
+      })
+    }
+  }
 function logginIn({username, password}){
     return dispatch=>{
         fetch("http://localhost:3000/login" , {
@@ -108,4 +119,4 @@ function logginIn({username, password}){
      }
 }
 
-export {fetchingRecipes,fetchedRecipes,onSearch,fetchedIngredients,fetchingIngredients, addIngredient,signUp,login,resetRedirect,favoriteRecipe,favorite,logginIn,addNewRecipe}
+export {fetchingRecipes,fetchedRecipes,onSearch,fetchedIngredients,fetchingIngredients, addIngredient,signUp,login,resetRedirect,favoriteRecipe,favorite,logginIn,addNewRecipe,addingRecipe}

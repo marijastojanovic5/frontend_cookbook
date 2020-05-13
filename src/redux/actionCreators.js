@@ -25,6 +25,11 @@ function favoriteRecipe(recipe){
     return { type: "FAVORITE",payload: recipe };
 
 }
+function addNewRecipe(recipe){
+    return { type: "ADD_NEW_RECIPE",payload: recipe };
+
+}
+
   
 function fetchingIngredients(){
     return dispatch => {
@@ -80,6 +85,11 @@ function signUp({firstName,lastName,username, password }){
     })
     }
 }
+// function addingRecipe({title,cookTime, instructins, ingredients, picture,gluten,dairy,vegan,vegetarian}){
+//     return dispatch=>{
+//         fetch()
+//     }
+// }
 function logginIn({username, password}){
     return dispatch=>{
         fetch("http://localhost:3000/login" , {
@@ -98,4 +108,4 @@ function logginIn({username, password}){
      }
 }
 
-export {fetchingRecipes,fetchedRecipes,onSearch,fetchedIngredients,fetchingIngredients, addIngredient,signUp,login,resetRedirect,favoriteRecipe,favorite,logginIn}
+export {fetchingRecipes,fetchedRecipes,onSearch,fetchedIngredients,fetchingIngredients, addIngredient,signUp,login,resetRedirect,favoriteRecipe,favorite,logginIn,addNewRecipe}

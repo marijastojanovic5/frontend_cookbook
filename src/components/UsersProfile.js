@@ -16,10 +16,8 @@ const UsersProfile=(props)=>{
 }
 const mapStateToProps=(store)=>({
     user: store.user
-   
-   
-
-
+    
 })
+
 
 export default withRouter(connect(mapStateToProps)(UsersProfile))

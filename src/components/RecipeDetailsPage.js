@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import {favorite} from '../redux/actionCreators'
+import Review from "./Review"
 
 
 import { withRouter } from "react-router-dom";
@@ -24,6 +25,7 @@ class RecipeDetails extends React.Component {
         <img src={this.props.recipe.picture} alt="recipe" />
         <p>Cook Time: {this.props.recipe.cook_time} mins</p>
         <h4>Instructions:</h4> <p>{this.props.recipe.instructions}</p>
+        <Review/>
       </div>
     );
   }

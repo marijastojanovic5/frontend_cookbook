@@ -1,6 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter, Link } from "react-router-dom";
+import {removeFavRecipe} from "../redux/actionCreators"
+//import { Button} from "react-bootstrap"
 const UserProfilePage = props => {
   console.log("User Profile props:", props);
   return (
@@ -25,7 +27,8 @@ const UserProfilePage = props => {
                   </p>
                   <Link to={`/recipes/${recipe.id}`}>
                     See Recipe
-                  </Link>
+                    </Link>
+                   <button onClick={()=>{props.recipeDelete(recipe,props.user)}}>Delete from favorites</button>
                 </div>
               </div>
             </div>
@@ -38,5 +41,10 @@ const UserProfilePage = props => {
 const mapStateToProps = store => ({
   user: store.user,
   recipe: store.recipes
-});
-export default withRouter(connect(mapStateToProps)(UserProfilePage));
+})
+const mapDispatchToProps=dispatch=>{
+  return {
+   recipeDelete: (recipe,user)=>dispatch(removeFavRecipe(recipe,user))
+  }
+}
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(UserProfilePage));

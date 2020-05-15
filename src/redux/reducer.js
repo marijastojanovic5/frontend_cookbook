@@ -35,11 +35,14 @@ const addIngredientReducer=(oldState=[],action)=>{
     }
 }
 const currentUserReducer=(oldState=null,action)=>{
+    //debugger-action, state
     switch(action.type){
         case "FETCHED_USER":
             return action.payload
             case "FAVORITE":
                 return {...oldState, favorites: [...oldState.favorites, action.payload]}
+            case "DELETE_FROM_FAVORITES":
+                return {...oldState, favorites: oldState.favorites.filter(recipe=>recipe.id !== action.payload.id)}
 
             default:
                 return oldState

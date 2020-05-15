@@ -29,6 +29,25 @@ function addNewRecipe(recipe){
     return { type: "ADD_NEW_RECIPE",payload: recipe };
 
 }
+function deleteFavoriteRecipe(recipe){
+    return {type: "DELETE_FROM_FAVORITES", payload: recipe}
+}
+
+function removeFavRecipe(recipe,user){
+  //let recipeId= user.favorites.find(rec=>rec.id === recipe.id)
+    let favoriteRec={recipe_id: recipe.id,user_id: user.user.id}
+    return dispatch =>{
+        fetch(`http://localhost:3000/favoriterecipe/${user.user.id}/${recipe.id}`,{
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+              },
+              body: JSON.stringify(favoriteRec)
+        })
+        return dispatch(deleteFavoriteRecipe(recipe))
+        }
+}
 
   
 function fetchingIngredients(){
@@ -119,4 +138,4 @@ function logginIn({username, password}){
      }
 }
 
-export {fetchingRecipes,fetchedRecipes,onSearch,fetchedIngredients,fetchingIngredients, addIngredient,signUp,login,resetRedirect,favoriteRecipe,favorite,logginIn,addNewRecipe,addingRecipe}
+export {fetchingRecipes,fetchedRecipes,onSearch,fetchedIngredients,fetchingIngredients, addIngredient,signUp,login,resetRedirect,favoriteRecipe,favorite,logginIn,addNewRecipe,addingRecipe,deleteFavoriteRecipe,removeFavRecipe}

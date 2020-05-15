@@ -7,6 +7,7 @@ import RecipeForm from "./components/RecipeForm";
 import Login from "./components/login";
 import SignUp from "./components/SignUp";
 import NavBar from './components/NavBar'
+import css from "./index.css"
 import { connect } from "react-redux";
 import { fetchingRecipes, fetchingIngredients} from "./redux/actionCreators";
 class App extends React.Component {

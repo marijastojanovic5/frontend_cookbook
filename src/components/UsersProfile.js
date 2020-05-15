@@ -17,7 +17,7 @@ const UserProfilePage = props => {
                 <img
                   className="card-img-top"
                   src={recipe.picture}
-                  alt="Card image cap"
+                  alt="card"
                 />
                 <div className="card-body">
                   <h5 className="card-title">{recipe.title}</h5>

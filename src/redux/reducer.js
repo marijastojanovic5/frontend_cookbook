@@ -10,6 +10,16 @@ const recipeReducer = (oldState=[], action)=>{
             return oldState
     }
 }
+const reviewReducer=(oldState=[],action)=>{
+    
+    switch(action.type){
+        case "CREATE_REVIEW":
+            return [...oldState,action.payload]
+        default:
+            return oldState
+    }
+    
+}
 const searchTextReducer =(oldState="",action)=>{
     switch(action.type){
         case "CHANGE_TEXT":
@@ -29,13 +39,13 @@ const ingredientReducer=(oldState=[],action)=>{
 const addIngredientReducer=(oldState=[],action)=>{
     switch(action.type){
         case "ADD_INGREDIENT":
-            return [...oldState,action.payload]
+            return [action.payload,...oldState]
             default:
                 return oldState
     }
 }
 const currentUserReducer=(oldState=null,action)=>{
-    //debugger-action, state
+    //debugger-action, state..you can check here
     switch(action.type){
         case "FETCHED_USER":
             return action.payload
@@ -69,7 +79,8 @@ const redirectReducer = (oldState = false, action) => {
         ingredients: ingredientReducer,
         newIngredient: addIngredientReducer,
         user: currentUserReducer,
-        redirect: redirectReducer
+        redirect: redirectReducer,
+        review: reviewReducer
     })
 
 export  default rootReducer

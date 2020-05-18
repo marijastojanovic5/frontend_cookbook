@@ -32,9 +32,28 @@ function addNewRecipe(recipe){
 function deleteFavoriteRecipe(recipe){
     return {type: "DELETE_FROM_FAVORITES", payload: recipe}
 }
+function createReview(review){
+    return {type: "CREATE_REVIEW",payload: review}
+}
+function addCreatedReview({title, reviewText, rating}, user, recipe){
+ 
+    return dispatch => {
+      fetch('http://localhost:3000/reviews', {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify({title, reviewText, rating, user_id: user.user.id, recipe_id: recipe.id})
+      })
+      .then(res => res.json())
+      .then(review => {
+          dispatch(createReview(review))
+      })
+    }
+  }
 
 function removeFavRecipe(recipe,user){
-  //let recipeId= user.favorites.find(rec=>rec.id === recipe.id)
     let favoriteRec={recipe_id: recipe.id,user_id: user.user.id}
     return dispatch =>{
         fetch(`http://localhost:3000/favoriterecipe/${user.user.id}/${recipe.id}`,{
@@ -138,4 +157,4 @@ function logginIn({username, password}){
      }
 }
 
-export {fetchingRecipes,fetchedRecipes,onSearch,fetchedIngredients,fetchingIngredients, addIngredient,signUp,login,resetRedirect,favoriteRecipe,favorite,logginIn,addNewRecipe,addingRecipe,deleteFavoriteRecipe,removeFavRecipe}
+export {fetchingRecipes,fetchedRecipes,onSearch,fetchedIngredients,fetchingIngredients, addIngredient,signUp,login,resetRedirect,favoriteRecipe,favorite,logginIn,addNewRecipe,addingRecipe,deleteFavoriteRecipe,removeFavRecipe,createReview,addCreatedReview}

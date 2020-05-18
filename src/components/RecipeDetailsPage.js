@@ -33,9 +33,12 @@ class RecipeDetails extends React.Component {
 const mapStateToProps = (store, ownProps) => ({
   recipe: store.recipes.find(
     recipe => recipe.id === parseInt(ownProps.match.params.id)
+    
+    
   ),
   ingredients: store.ingredients,
   user: store.user
+  
 });
 
  const mapDispatchToProps=dispatch=>{

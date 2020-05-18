@@ -62,7 +62,7 @@ class RecipeForm extends React.Component {
             <h4>Added Ingredients:</h4>
             {this.state.ingredients.map(ing => ing)}
           </div>
-          <div></div>
+          
           <div className="form-group">
             <label>Recipe Title: </label>
             <input

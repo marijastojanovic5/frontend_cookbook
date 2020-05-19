@@ -1,13 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 import {favorite} from '../redux/actionCreators'
-import Review from "./Review"
-
-
+import ReviewForm from "./ReviewForm"
 import { withRouter } from "react-router-dom";
 class RecipeDetails extends React.Component {
+  
   render() {
-    console.log("Recipe details:",this.props.recipe)
+    console.log("Recipe details:",this.props)
     return !this.props.recipe ? null : (
       <div>
         <h3>{this.props.recipe.title}</h3>
@@ -25,7 +24,14 @@ class RecipeDetails extends React.Component {
         <img src={this.props.recipe.picture} alt="recipe" />
         <p>Cook Time: {this.props.recipe.cook_time} mins</p>
         <h4>Instructions:</h4> <p>{this.props.recipe.instructions}</p>
-        <Review/>
+        <ReviewForm/>
+         {this.props.recipe.reviews ? 
+
+        this.props.recipe.reviews.map(rev=> <li>{rev.review}</li> ) :
+         null} 
+
+      
+       
       </div>
     );
   }

@@ -151,7 +151,11 @@ function logginIn({username, password}){
         })
         .then(res=>res.json())
         .then(user=>{
+          if (user.successful){
             dispatch(login(user))
+          }else{
+            alert(user.message)
+          }
             
         })
      }

@@ -119,9 +119,9 @@ function signUp({firstName,lastName,username, password }){
         })
         .then(res=>res.json())
         .then(user=>{
-        dispatch(login(user))
+         dispatch(login(user))
     })
-    }
+    } 
 }
 function addingRecipe({ title, cookTime, instructions, ingredients, picture, gluten, dairy, vegan, vegetarian }) {
     return dispatch => {
@@ -135,7 +135,8 @@ function addingRecipe({ title, cookTime, instructions, ingredients, picture, glu
       })
       .then(res => res.json())
       .then(recipe => {
-        dispatch(addNewRecipe(recipe))
+        
+       dispatch(addNewRecipe(recipe))
       })
     }
   }

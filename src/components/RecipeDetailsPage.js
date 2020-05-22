@@ -6,8 +6,7 @@ import { withRouter } from "react-router-dom";
 class RecipeDetails extends React.Component {
   
   render() {
-    console.log("Recipe details:",this.props)
-    return !this.props.recipe ? null : (
+      return !this.props.recipe ? null : (
       <div>
         <h3>{this.props.recipe.title}</h3>
         <button onClick={()=>this.props.fav(this.props.recipe,this.props.user.user)}>Add to favorties</button>
@@ -24,32 +23,29 @@ class RecipeDetails extends React.Component {
         <img src={this.props.recipe.picture} alt="recipe" />
         <p>Cook Time: {this.props.recipe.cook_time} mins</p>
         <h4>Instructions:</h4> <p>{this.props.recipe.instructions}</p>
-        <ReviewForm/>
+        <ReviewForm />
+
          {this.props.recipe.reviews ? 
-
-        this.props.recipe.reviews.map(rev=> <li>{rev.review}</li> ) :
-         null} 
-
-      
-       
-      </div>
+          this.props.recipe.reviews.map(rev=> <li>{rev.review}</li> ) :
+         null } 
+        {/* // { this.props.recipe.reviews.map(rev=> <li>{rev.review}</li> )} */}
+       </div>
     );
   }
 }
 const mapStateToProps = (store, ownProps) => ({
-  recipe: store.recipes.find(
-    recipe => recipe.id === parseInt(ownProps.match.params.id)
+    recipe: store.recipes.find(
+    recipe => recipe.id === parseInt(ownProps.match.params.id)),
+    ingredients: store.ingredients,
+    user: store.user
     
-    
-  ),
-  ingredients: store.ingredients,
-  user: store.user
   
 });
 
  const mapDispatchToProps=dispatch=>{
    return{
      fav: (recipe,user)=>dispatch(favorite(recipe,user))
+    
      
    }
  }

@@ -33,25 +33,25 @@ function deleteFavoriteRecipe(recipe){
     return {type: "DELETE_FROM_FAVORITES", payload: recipe}
 }
 function createReview(review){
-    return {type: "CREATE_REVIEW",payload: review}
+  return {type: "CREATE_REVIEW",payload: review}
 }
-function addCreatedReview({title, reviewText, rating}, user, recipe){
- 
-    return dispatch => {
-      fetch('http://localhost:3000/reviews', {
-        method: "POST",
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json'
-        },
-        body: JSON.stringify({title, reviewText, rating, user_id: user.user.id, recipe_id: recipe.id})
-      })
+
+function addCreatedReview(newReview,recipe) {
+  return dispatch => {
+    fetch(`http://localhost:3000/recipes/${recipe.id}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify(newReview)
+    })
       .then(res => res.json())
-      .then(review => {
-          dispatch(createReview(review))
-      })
-    }
-  }
+      .then(recipe => {
+          dispatch(createReview(recipe));
+      });
+  };
+}
 
 function removeFavRecipe(recipe,user){
     let favoriteRec={recipe_id: recipe.id,user_id: user.user.id}

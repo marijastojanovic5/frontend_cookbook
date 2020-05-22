@@ -1,25 +1,24 @@
 import {combineReducers} from 'redux'
 
-const recipeReducer = (oldState=[], action)=>{
-    switch(action.type){
-    case "FETCHED_RECIPES":
-        return action.payload
-        case "ADD_NEW_RECIPE":
-            return [...oldState,action.payload]
-        default:
-            return oldState
-    }
-}
-const reviewReducer=(oldState=[],action)=>{
-    
-    switch(action.type){
+const recipeReducer = (oldState = [], action) => {
+    switch (action.type) {
+      case "FETCHED_RECIPES":
+        return action.payload;
+      case "ADD_NEW_RECIPE":
+        return [...oldState, action.payload];
         case "CREATE_REVIEW":
-            return [...oldState,action.payload]
-        default:
-            return oldState
+          return oldState.map(rec => {
+            if(rec.id === action.payload.recipe_id){
+              return {...rec, reviews: [ action.payload,...rec.reviews]}
+            } else {
+              return rec
+            }
+          })
+      default:
+        return oldState;
     }
-    
-}
+  };
+
 const searchTextReducer =(oldState="",action)=>{
     switch(action.type){
         case "CHANGE_TEXT":
@@ -79,8 +78,8 @@ const redirectReducer = (oldState = false, action) => {
         ingredients: ingredientReducer,
         newIngredient: addIngredientReducer,
         user: currentUserReducer,
-        redirect: redirectReducer,
-        review: reviewReducer
+        redirect: redirectReducer
+       
     })
 
 export  default rootReducer

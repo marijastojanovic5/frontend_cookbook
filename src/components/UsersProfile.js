@@ -4,7 +4,6 @@ import { withRouter, Link } from "react-router-dom";
 import {removeFavRecipe} from "../redux/actionCreators"
 //import { Button} from "react-bootstrap"
 const UserProfilePage = props => {
-  console.log("User Profile props:", props);
   return (
     <div>
       Welcome {props.user.user.user_name}

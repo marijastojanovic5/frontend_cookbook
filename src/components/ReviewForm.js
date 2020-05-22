@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { addCreatedReview } from "../redux/actionCreators";
 class Review extends Component {
+  
   constructor(props) {
     super(props);
     this.state = {
@@ -23,7 +24,8 @@ class Review extends Component {
   };
   addCreatedReview = e => {
     e.preventDefault();
-    this.props.onSubmit(this.state, this.props.user, this.props.recipe);
+    this.props.onSubmit(this.state,this.props.recipe);
+    e.target.reset()
   };
   render() {
     return (
@@ -55,7 +57,7 @@ class Review extends Component {
               rows="3"
               style={{ width: 200 }}
             ></textarea>
-            <button>Submit Review</button>
+            <button >Submit Review</button>
           </div>
         </form>
       </div>
@@ -63,12 +65,15 @@ class Review extends Component {
   }
 }
 const mapStateToProps = (state, ownProps) => ({
+
   user: state.user,
   recipe: state.recipes.find(rec => rec.id === parseInt(ownProps.match.params.id))
+ 
+  
 });
 const mapDispatchToProps = dispatch => {
   return {
-    onSubmit: (review, user, recipe) => dispatch(addCreatedReview(review, user, recipe))
+    onSubmit: (newReview,recipe) => dispatch(addCreatedReview(newReview ,recipe))
   };
 };
 export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Review));

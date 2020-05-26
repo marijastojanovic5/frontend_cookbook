@@ -14,10 +14,20 @@ const recipeReducer = (oldState = [], action) => {
               return rec
             }
           })
-      default:
-        return oldState;
+          case "DELETE_REVIEW":
+            
+            return oldState.map(rec => {
+              if(rec.id !== action.payload.recipe_id){
+                return rec
+              } else {
+                return {...rec, reviews: rec.reviews.filter(rev => rev.id !== action.payload.id)}
+              }
+            })
+        default:
+          return oldState;
+      }
     }
-  };
+  
 
 const searchTextReducer =(oldState="",action)=>{
     switch(action.type){

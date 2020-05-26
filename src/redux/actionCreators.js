@@ -35,6 +35,25 @@ function deleteFavoriteRecipe(recipe){
 function createReview(review){
   return {type: "CREATE_REVIEW",payload: review}
 }
+function deletingReview(review){
+  
+  return {type: "DELETE_REVIEW",payload: review}
+}
+function deleteReview(review){
+  
+  return dispatch=>{
+    fetch(`http://localhost:3000/recipes/${review.recipe_id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify(review)
+  })
+  return dispatch(deletingReview(review))
+}
+}
+
 
 function addCreatedReview(review, recipe, user) {
   return dispatch => {
@@ -162,4 +181,4 @@ function logginIn({username, password}){
      }
 }
 
-export {fetchingRecipes,fetchedRecipes,onSearch,fetchedIngredients,fetchingIngredients, addIngredient,signUp,login,resetRedirect,favoriteRecipe,favorite,logginIn,addNewRecipe,addingRecipe,deleteFavoriteRecipe,removeFavRecipe,createReview,addCreatedReview}
+export {fetchingRecipes,fetchedRecipes,onSearch,fetchedIngredients,fetchingIngredients, addIngredient,signUp,login,resetRedirect,favoriteRecipe,favorite,logginIn,addNewRecipe,addingRecipe,deleteFavoriteRecipe,removeFavRecipe,createReview,addCreatedReview,deleteReview,deletingReview}

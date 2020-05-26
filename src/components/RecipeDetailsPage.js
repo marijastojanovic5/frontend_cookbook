@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import {favorite} from '../redux/actionCreators'
+import {favorite,deleteReview} from '../redux/actionCreators'
 import ReviewForm from "./ReviewForm"
 import { withRouter } from "react-router-dom";
 class RecipeDetails extends React.Component {
@@ -24,12 +24,14 @@ class RecipeDetails extends React.Component {
         <p>Cook Time: {this.props.recipe.cook_time} mins</p>
         <h4>Instructions:</h4> <p>{this.props.recipe.instructions}</p>
         <ReviewForm />
+        {this.props.recipe.reviews ?
+           this.props.recipe.reviews.map(rev => (
+             <div>{rev.review}
+               <button onClick={() => this.props.deleteReview(rev)}>Remove</button></div>
+           ))
+          : null}
 
-         {this.props.recipe.reviews ? 
-          this.props.recipe.reviews.map(rev=> <li>{rev.review}</li> ) :
-         null } 
-        {/* // { this.props.recipe.reviews.map(rev=> <li>{rev.review}</li> )} */}
-       </div>
+         </div>
     );
   }
 }
@@ -44,7 +46,8 @@ const mapStateToProps = (store, ownProps) => ({
 
  const mapDispatchToProps=dispatch=>{
    return{
-     fav: (recipe,user)=>dispatch(favorite(recipe,user))
+     fav: (recipe,user) => dispatch(favorite(recipe,user)),
+     deleteReview: review => dispatch(deleteReview(review))
     
      
    }

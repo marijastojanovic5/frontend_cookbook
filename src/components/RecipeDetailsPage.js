@@ -9,7 +9,7 @@ class RecipeDetails extends React.Component {
       return !this.props.recipe ? null : (
       <div>
         <h3>{this.props.recipe.title}</h3>
-        <button onClick={()=>this.props.fav(this.props.recipe,this.props.user.user)}>Add to favorties</button>
+        <button onClick={()=>this.props.fav(this.props.recipe,this.props.user.user)}>Add to favorites</button>
         <div>
           <p>Dairy Free: {this.props.recipe.dairy_free ? "Yes" : "No"}</p>
           <p>Gluten Free: {this.props.recipe.gluten_free ? "Yes" : "No"}</p>

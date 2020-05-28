@@ -54,17 +54,20 @@ const addIngredientReducer=(oldState=[],action)=>{
     }
 }
 const currentUserReducer=(oldState=null,action)=>{
-    //debugger-action, state..you can check here
     switch(action.type){
         case "FETCHED_USER":
             return action.payload
             case "FAVORITE":
-                return {...oldState, favorites: [...oldState.favorites, action.payload]}
+            return oldState.favorites.map(fav=>fav.id).includes(action.payload.id) ?
+            oldState 
+            : 
+            {...oldState, favorites: [...oldState.favorites, action.payload]}
+
             case "DELETE_FROM_FAVORITES":
                 return {...oldState, favorites: oldState.favorites.filter(recipe=>recipe.id !== action.payload.id)}
-
-            default:
-                return oldState
+                
+                default:
+                  return oldState
     }
 }
 

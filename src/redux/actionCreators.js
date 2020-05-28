@@ -121,6 +121,7 @@ function favorite(recipe, user) {
           })
           .then(res => res.json())
           .then(recipe => {
+            
              
         dispatch(favoriteRecipe(recipe))
       });

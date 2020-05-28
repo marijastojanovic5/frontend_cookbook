@@ -2,19 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { addingRecipe } from "../redux/actionCreators";
-// <select
-//   value={this.state.name}
-//   name={this.state.ingredients}
-//   onChange={this.recipeHandler}
-// >
-//   <option defaultValue="value">Select Ingredient</option>
-//
-//   {this.props.ingredients.map(ing => (
-//     <option key={ing.id} value={ing.name}>
-//       {ing.name}
-//     </option>
-//   ))}
-// </select>
+
 class RecipeForm extends React.Component {
   state = {
     title: "",
@@ -32,6 +20,13 @@ class RecipeForm extends React.Component {
     copyState[e.target.name] = e.target.value;
     this.setState(copyState);
   };
+  allIngredientObjects = () => {
+    debugger;
+  };
+  ingredientsHandler = (e, ing) => {
+    let selectedIng = ing.filter(ing => ing.name === e.target.value).pop()
+    this.setState({ingredients: [...this.state.ingredients, selectedIng]});
+  };
   veganHandler = e => {
     let toggle = this.state.name ? true : false;
     this.setState({ vegan: !toggle });
@@ -48,21 +43,22 @@ class RecipeForm extends React.Component {
     let toggle = this.state.dairy ? true : false;
     this.setState({ dairy: !toggle });
   };
+  
   onRecipeSubmit = e => {
-    e.preventDefault()
-    this.props.onSubmit(this.state)
+    e.preventDefault();
+    this.props.onSubmit(this.state);
   };
   render() {
-    console.log("Recipe Form:", this.state);
     return !this.props.ingredients ? null : (
       <div>
         <form onSubmit={this.onRecipeSubmit}>
           <h2>Add a new Recipe!</h2>
           <div className="added-ingredient-div">
             <h4>Added Ingredients:</h4>
-            {this.state.ingredients.map(ing => ing)}
+              {this.state.ingredients.map(ing => (
+                <p>{ing.name}</p>
+              ))}
           </div>
-          
           <div className="form-group">
             <label>Recipe Title: </label>
             <input
@@ -73,6 +69,16 @@ class RecipeForm extends React.Component {
               placeholder="Recipe Title"
               style={{ width: 200 }}
             />
+            <select
+              onChange={e => this.ingredientsHandler(e, this.props.ingredients)}
+            >
+              <option defaultValue="value">Select Ingredient</option>
+              {this.props.ingredients.map(ing => (
+                <option key={ing.id} value={ing.name}>
+                  {ing.name}
+                </option>
+              ))}
+            </select>
             <label>Cooktime: </label>
             <input
               className="form-control form-control-sm"
@@ -157,9 +163,10 @@ class RecipeForm extends React.Component {
     );
   }
 }
-const mapStateToProps = state => ({
-  ingredients: state.ingredients,
-  recipes: state.recipes
+const mapStateToProps = store => ({
+  ingredients: store.ingredients,
+  recipes: store.recipes,
+  user: store.user
 });
 const mapDispatchToProps = dispatch => {
   return {

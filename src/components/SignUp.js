@@ -26,7 +26,6 @@ class SignUp extends React.Component{
       } 
                      
         return(
-           
             <div className="bg-img">
                 <div className="container-fluid login-container">
                 <div className="row login-container">
@@ -35,13 +34,13 @@ class SignUp extends React.Component{
             <div className="form-group">
             <h3>Please sign up </h3><hr/>
             <label htmlFor="name">First Name:</label>
-            <input type="text" className="form-control" name = "firstName"    placeholder="Your first name here..."  value={this.state.name} onChange={this.handleChange}/>
+            <input type="text" className="form-control" name = "firstName"    placeholder="Your first name"  value={this.state.name} onChange={this.handleChange}/>
             <label htmlFor="name">Last Name:</label>
-            <input type="text" className="form-control" name = "lastName"    placeholder="Your last name here..."  value={this.state.name} onChange={this.handleChange}/>
+            <input type="text" className="form-control" name = "lastName"    placeholder="Your last name"  value={this.state.name} onChange={this.handleChange}/>
             <label htmlFor="username">Username:</label>
-            <input type="text" className="form-control" name = "username"    placeholder="Your username here..."  value={this.state.username} onChange={this.handleChange}/>
+            <input type="text" className="form-control" name = "username"    placeholder="Your username"  value={this.state.username} onChange={this.handleChange}/>
             <label htmlFor="password">Password:</label>
-            <input type="password" className="form-control" name = "password"    placeholder="Your password here..."  value={this.state.password} onChange={this.handleChange}/>
+            <input type="password" className="form-control" name = "password"    placeholder="Your password"  value={this.state.password} onChange={this.handleChange}/>
             </div>
             <button type="submit" className="btn btn-primary btn-lg btn-block login-btn">SignUp</button>
             <label className="label"> Already a member? <Link to="/login">Log in here</Link></label>
@@ -51,7 +50,6 @@ class SignUp extends React.Component{
             </div>
             </div>
             </div>
-            
         )
     }
     }

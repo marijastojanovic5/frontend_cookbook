@@ -8,7 +8,7 @@ const SearchBar =(props)=>{
         <input
         className="form-control"
         type="text"
-        placeholder="Search"
+        placeholder="Search recipe..."
         aria-label="Search"
         value={props.value}
         onChange={(e)=>props.onSearch(e.target.value)}

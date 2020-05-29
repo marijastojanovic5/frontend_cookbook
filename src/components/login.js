@@ -32,9 +32,9 @@ class Login extends React.Component {
         <div className="form-group">
         <h3>Please log in </h3><hr/>
        <label htmlFor="username">Username:</label>
-        <input type="text" className="form-control" name = "username"    placeholder="Your username here..."  value={this.state.username} onChange={this.handleChange}/>
+        <input type="text" className="form-control" name = "username"    placeholder="Your username"  value={this.state.username} onChange={this.handleChange}/>
         <label htmlFor="password">Password:</label>
-        <input type="password" className="form-control" name = "password"    placeholder="Your password here..."  value={this.state.password} onChange={this.handleChange}/>
+        <input type="password" className="form-control" name = "password"    placeholder="Your password"  value={this.state.password} onChange={this.handleChange}/>
         </div>
         <button type="submit" className="btn btn-primary btn-lg btn-block  login-btn">Log in</button>
         <label className="label"> Don't have an account? <Link to="/">Sign up here</Link></label>

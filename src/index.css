@@ -1,19 +1,11 @@
-
 body {
-  background-image: url('images/spices.jpg');
+  background-image: url('images/spoons.jpg');
+  background-attachment: fixed;
   background-size: cover;
+} 
+.container-fluid-all{
+  margin-top: 70px;
 }
-.added-ingredient-div {
-border-style:  solid;
-}
-/* .fixed-nav-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 9999;
-  height: 50px;
-} */
 .form-group  {
   color: #ccc;
 }
@@ -27,5 +19,33 @@ border-style:  solid;
 a {
   color: #ccc;
 
+}
+.fixed-nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  height: 50px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #87240b;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
 }
 

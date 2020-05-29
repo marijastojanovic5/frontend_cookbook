@@ -4,7 +4,7 @@ import SearchBar from "./SearchBar";
 class RecipeContainer extends React.Component {
   render() {
     return (
-      <div>
+      <div className="container-fluid-all">
         <SearchBar />
         <RecipeList />
       </div>

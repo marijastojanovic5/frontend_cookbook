@@ -26,6 +26,7 @@ class SignUp extends React.Component{
       } 
                      
         return(
+           
             <div className="bg-img">
                 <div className="container-fluid login-container">
                 <div className="row login-container">
@@ -42,14 +43,15 @@ class SignUp extends React.Component{
             <label htmlFor="password">Password:</label>
             <input type="password" className="form-control" name = "password"    placeholder="Your password here..."  value={this.state.password} onChange={this.handleChange}/>
             </div>
-            <button type="submit" className="btn btn-primary btn-lg btn-block" id="login-btn">SignUp</button>
-            <label> Already a member? <Link to="/login">Log in here</Link></label>
+            <button type="submit" className="btn btn-primary btn-lg btn-block login-btn">SignUp</button>
+            <label className="label"> Already a member? <Link to="/login">Log in here</Link></label>
 
             </form>
              </div>
             </div>
             </div>
             </div>
+            
         )
     }
     }

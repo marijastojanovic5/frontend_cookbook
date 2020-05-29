@@ -1,11 +1,31 @@
+
+body {
+  background-image: url('images/spices.jpg');
+  background-size: cover;
+}
 .added-ingredient-div {
 border-style:  solid;
 }
-.fixed-nav-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 9999;
-    height: 50px;
-  }
+/* .fixed-nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  height: 50px;
+} */
+.form-group  {
+  color: #ccc;
+}
+.label {
+  color: #ccc;
+}
+.login-btn {
+  background-color: #87240b;
+  border: 2px;
+}
+a {
+  color: #ccc;
+
+}
+

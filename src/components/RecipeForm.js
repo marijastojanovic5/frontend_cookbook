@@ -47,6 +47,7 @@ class RecipeForm extends React.Component {
   onRecipeSubmit = e => {
     e.preventDefault();
     this.props.onSubmit(this.state);
+    this.props.history.push('/recipes')
   };
   render() {
     return !this.props.ingredients ? null : (
@@ -157,6 +158,7 @@ class RecipeForm extends React.Component {
           </div>
           <div>
             <button type="submit">Submit Recipe</button>
+          
           </div>
         </form>
       </div>

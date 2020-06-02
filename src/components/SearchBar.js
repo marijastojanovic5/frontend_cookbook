@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import {onSearch} from '../redux/actionCreators'
 
 const SearchBar =(props)=>{
-    console.log("SearchBar props", props)
     return(
         <input
         className="form-control"

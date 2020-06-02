@@ -48,4 +48,14 @@ li a {
   padding: 14px 16px;
   text-decoration: none;
 }
+.recipe-details {
+  margin-top:  60px;
+  color: #ccc;
+  margin-left: 20px;
+}
+.recipe-form {
+  color: #ccc;
+
+}
+
 

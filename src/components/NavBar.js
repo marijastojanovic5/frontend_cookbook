@@ -8,10 +8,6 @@ const NavBar =(props)=>{
               <li><Link to='/recipes'>All Recipes</Link></li>
               <li><Link to='/addnewrecipe'>Add new Recipe</Link></li>
               <li><Link to="/usersprofile">Profile</Link></li>
-             {/* {props.match.path === '/login' ? 
-              <li><Link to="/login">Login</Link></li>
-              :
-             <li id="login"><Link to="/signup">SignUp</Link></li> } */}
              </ul>
 
         </div>

@@ -7,22 +7,23 @@ class RecipeDetails extends React.Component {
   
   render() {
       return !this.props.recipe ? null : (
-      <div>
+      <div className="recipe-details">
         <h3>{this.props.recipe.title}</h3>
-        <button onClick={()=>this.props.fav(this.props.recipe,this.props.user.user)}>Add to favorites</button>
-        <div>
-          <p>Dairy Free: {this.props.recipe.dairy_free ? "Yes" : "No"}</p>
-          <p>Gluten Free: {this.props.recipe.gluten_free ? "Yes" : "No"}</p>
-          <p>Vegan: {this.props.recipe.vegan ? "Yes" : "No"}</p>
-          <p>Vegetarian: {this.props.recipe.vegetarian ? "Yes" : "No"}</p>
-        </div>
         <h4>Ingredients:</h4>
         {this.props.recipe.ingredients.map(ing => (
           <p>{ing.name} {ing.amount} {ing.unit}</p>
         ))}
         <img src={this.props.recipe.picture} alt="recipe" />
         <p>Cook Time: {this.props.recipe.cook_time} mins</p>
+        <div id="dietery">
+          <p>Dairy Free: {this.props.recipe.dairy_free ? "Yes" : "No"}</p>
+          <p>Gluten Free: {this.props.recipe.gluten_free ? "Yes" : "No"}</p>
+          <p>Vegan: {this.props.recipe.vegan ? "Yes" : "No"}</p>
+          <p>Vegetarian: {this.props.recipe.vegetarian ? "Yes" : "No"}</p>
+        </div>
         <h4>Instructions:</h4> <p>{this.props.recipe.instructions}</p>
+        <button onClick={()=>this.props.fav(this.props.recipe,this.props.user.user)}>Add to favorites</button>
+
         <ReviewForm />
         {this.props.recipe.reviews
           ? this.props.recipe.reviews.map(rev => (

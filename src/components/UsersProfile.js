@@ -7,7 +7,7 @@ const  UserProfilePage = props => {
     <div className="user-profile-div">
       <h1>Welcome {props.user.user.username}!</h1>
       <div className="profile-div">
-      <img id ="avatar"src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" alt="avatar"/>
+      <img id ="avatar"src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" alt="avatar"/>
       <h3>{props.user.user.username}</h3>
       <p>Bio:</p>
       </div>

@@ -2,11 +2,15 @@ import React from "react";
 import { connect } from "react-redux";
 import { withRouter, Link } from "react-router-dom";
 import {removeFavRecipe} from "../redux/actionCreators"
-//import { Button} from "react-bootstrap"
-const UserProfilePage = props => {
+const  UserProfilePage = props => {
   return (
-    <div>
-      Welcome {props.user.user.user_name}
+    <div className="user-profile-div">
+      <h1>Welcome {props.user.user.username}!</h1>
+      <div className="profile-div">
+      <img id ="avatar"src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" alt="avatar"/>
+      <h3>{props.user.user.username}</h3>
+      <p>Bio:</p>
+      </div>
       My Favorite Recipes:{" "}
       <div className="container-fluid">
         <div className="row">

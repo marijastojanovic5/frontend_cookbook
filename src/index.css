@@ -11,6 +11,16 @@ body {
   background-color: rgba(135,36,11,0.3);
 
 }
+.card {
+  margin-bottom: 20px;
+  height: 300px;
+  width: 220px;
+  border-color: #87240b;
+  background-color:  rgba(12, 12, 12, 0.8);
+}
+.card-title {
+  color:#ccc;
+}
 
 .container-fluid-all{
   margin-top: 70px;
@@ -44,6 +54,19 @@ ul {
   padding: 0;
   overflow: hidden;
   background-color: #87240b;
+}
+.delete {
+  background-color: #87240b;
+  margin-left: 90%;
+  width: 10%;
+  text-align: center;
+  border-radius: 50%;
+
+}
+.see-recipe {
+  background-color: #87240b;
+  border-radius: 40%;
+
 }
 
 li {

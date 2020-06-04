@@ -15,20 +15,23 @@ const  UserProfilePage = props => {
       <div className="container-fluid">
         <div className="row">
           {props.user.favorites.map(recipe => (
-            <div className="col-lg-4">
+            <div className="col-lg-2">
               <div className="card">
                 <img
                   className="card-img-top"
                   src={recipe.picture}
                   alt="card"
                 />
+
                 <div className="card-body">
-                  <h5 className="card-title">{recipe.title}</h5>
+                  <h6 className="card-title">{recipe.title}</h6>
                  
-                  <Link to={`/recipes/${recipe.id}`}>
+                    <div className="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" className="btn btn-secondary see-recipe"><Link to={`/recipes/${recipe.id}`}>
                     See Recipe
-                    </Link>
-                   <button onClick={()=>{props.recipeDelete(recipe,props.user)}}>Delete from favorites</button>
+                    </Link></button>
+                    <button type="button" className="btn btn-secondary delete"onClick={()=>{props.recipeDelete(recipe,props.user)}}>x</button>
+                    </div>
                 </div>
               </div>
             </div>

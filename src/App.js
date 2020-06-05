@@ -8,14 +8,26 @@ import Login from "./components/login";
 import SignUp from "./components/SignUp";
 import NavBar from './components/NavBar'
 import { connect } from "react-redux";
-import { fetchingRecipes, fetchingIngredients} from "./redux/actionCreators";
+import { fetchingRecipes, fetchingIngredients,login} from "./redux/actionCreators";
 class App extends React.Component {
+
+  
   componentDidMount() {
     this.props.fetchingRecipes()
     this.props.fetchingIngredients()
-    
-    
-  }
+    if(localStorage.getItem("jwt")){
+      fetch("http://localhost:3000/usersprofile",{
+        method: "GET",
+        headers: {
+        "Authentication" : localStorage.getItem("jwt"),
+        "Accept"   : "application/json"
+
+   }}).then(res=>res.json())
+   .then(user => {
+     console.log(user)
+    // this.props.loginUser(user)
+})
+}}
   render() {
     return (
       <div>
@@ -45,6 +57,8 @@ const mapDispatchToProps = dispatch => ({
   fetchingIngredients: () => {
     dispatch(fetchingIngredients())
   }
+ // ,
+ // loginUser: (user)=>{dispatch(login(user))}
  
 
   

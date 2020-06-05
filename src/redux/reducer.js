@@ -61,7 +61,7 @@ const currentUserReducer=(oldState=null,action)=>{
             return action.payload
             case "FAVORITE":
             return oldState.favorites.map(fav=>fav.id).includes(action.payload.id) ?
-              swal("Cannot add this twice")
+              oldState && swal("Cannot add this twice")
             : 
             {...oldState, favorites: [...oldState.favorites, action.payload]}
 

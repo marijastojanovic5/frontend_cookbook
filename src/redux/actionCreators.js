@@ -172,7 +172,9 @@ function logginIn({username, password}){
         })
         .then(res=>res.json())
         .then(user=>{
+          console.log(user)
           if (user.successful){
+            localStorage.setItem("jwt",user.token)
             dispatch(login(user))
           }else{
             alert(user.message)

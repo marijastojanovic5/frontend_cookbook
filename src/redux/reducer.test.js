@@ -19,4 +19,10 @@ describe("reducer", () => {
     let result = (reducer(mockState, mockAction))
     expect(result.user).toBe(mockAction.payload)
   })
+  it( 'handles CHANGE_TEXT', () => {
+    let mockState = { searchText: "" }
+    let mockAction = { type: 'CHANGE_TEXT', payload: "Chicken"}
+    let result = (reducer(mockState, mockAction))
+    expect(result.searchText).toBe(mockAction.payload)
+  })
 })

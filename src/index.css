@@ -17,6 +17,7 @@ body {
   width: 220px;
   border-color: #87240b;
   background-color:  rgba(12, 12, 12, 0.8);
+
 }
 .card-title {
   color:#ccc;
@@ -87,6 +88,13 @@ li a {
 .recipe-form {
   color: #ccc;
 
+}
+#review-div {
+  border: 2px solid  #87240b;
+  width: 40%;
+  float: center;
+  margin-left: 25%;
+  margin-top: 20px;
 }
 #avatar {
   margin-top: 20px;

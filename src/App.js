@@ -10,9 +10,9 @@ import NavBar from './components/NavBar'
 import { connect } from "react-redux";
 import { fetchingRecipes, fetchingIngredients,login} from "./redux/actionCreators";
 class App extends React.Component {
-  state={
-    loading: true
-  }
+  // state={
+  //   loading: true
+  // }
 
   componentDidMount() {
     this.props.fetchingRecipes()
@@ -27,10 +27,10 @@ class App extends React.Component {
    }}).then(res=>res.json())
    .then(user => {
      console.log("What is this user in app",user)
-   // this.props.loginUser(user)
-  })
-//} //else {
- // this.setState({ loading: false })
+     this.props.loginUser(user)
+   })
+//  } else {
+//    this.setState({ loading: false })
 
 }}
   render() {
@@ -39,15 +39,16 @@ class App extends React.Component {
        
         <BrowserRouter>
            <NavBar/> 
-           {!this.props.user ?  <Redirect to="/" /> :
-            <Switch> 
-          <Route exact path="/" component={SignUp} />
+         {this.props.user ? <Redirect to="/usersprofile"/> :  <Route exact path="/" component={SignUp} />}
+          <Switch> 
+          {/* <Route exact path="/" component={SignUp} /> */}
           <Route exact path="/login" component={Login} />
           <Route exact path="/recipes" component={RecipeContainer} />
           <Route exact path="/recipes/:id" component={RecipeDetailsPage} />
           <Route exact path="/addnewrecipe" component={RecipeForm} />
           <Route exact path="/usersprofile" component={UsersProfile}/>
           </Switch> 
+
   }
         </BrowserRouter>
 

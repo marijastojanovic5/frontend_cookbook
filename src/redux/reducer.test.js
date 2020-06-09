@@ -25,4 +25,10 @@ describe("reducer", () => {
     let result = (reducer(mockState, mockAction))
     expect(result.searchText).toBe(mockAction.payload)
   })
+  // it( 'handles ADD_REVIEW', () => {
+  //   let mockState = { recipes: { reviews: [] } }
+  //   let mockAction = {type: 'ADD_REVIEW', payload: { id:1, user_id: 1, rating: 1, review: "terrible", recipe_id: 2 }}
+  //   let result = (reducer(mockState, mockAction))
+  //   expect(result.recipes[2].reviews.length).toBe(1)
+  // })
 })

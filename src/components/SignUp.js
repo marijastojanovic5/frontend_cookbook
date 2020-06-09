@@ -22,8 +22,8 @@ class SignUp extends React.Component{
         }
     render(){
         if (this.props.redirect) {
-            return <Redirect to="/usersprofile"/> 
-      } 
+             return <Redirect to="/usersprofile"/> 
+   } 
                      
         return(
             <div className="bg-img">

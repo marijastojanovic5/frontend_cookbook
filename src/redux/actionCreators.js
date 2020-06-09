@@ -16,8 +16,8 @@ function addIngredient(newIngredient){
     return {type: "ADD_INGREDIENT",payload: newIngredient}
 }
 function login(user){
-  
-    return {type: "FETCHED_USER",payload: user}
+ 
+return {type: "FETCHED_USER",payload: user}
 }
 function resetRedirect() {
     return { type: "REDIRECT" };
@@ -184,4 +184,4 @@ function logginIn({username, password}){
      }
 }
 
-export {fetchingRecipes,fetchedRecipes,onSearch,fetchedIngredients,fetchingIngredients, addIngredient,signUp,login,resetRedirect,favoriteRecipe,favorite,logginIn,addNewRecipe,addingRecipe,deleteFavoriteRecipe,removeFavRecipe,createReview,addCreatedReview,deleteReview,deletingReview}
+export {fetchingRecipes,fetchedRecipes,onSearch,fetchedIngredients,resetRedirect,fetchingIngredients, addIngredient,signUp,login,favoriteRecipe,favorite,logginIn,addNewRecipe,addingRecipe,deleteFavoriteRecipe,removeFavRecipe,createReview,addCreatedReview,deleteReview,deletingReview}

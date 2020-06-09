@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux'
-import swal from "sweetalert"
+//import swal from "sweetalert"
 
 
 const recipeReducer = (oldState = [], action) => {
@@ -11,7 +11,7 @@ const recipeReducer = (oldState = [], action) => {
         case "CREATE_REVIEW":
           return oldState.map(rec => {
             if(rec.id === action.payload.recipe_id){
-              return {...rec, reviews: [ action.payload,...rec.reviews] && swal("Review created!")}
+              return {...rec, reviews: [ action.payload,...rec.reviews]}
             } else {
               return rec
             }
@@ -22,7 +22,7 @@ const recipeReducer = (oldState = [], action) => {
               if(rec.id !== action.payload.recipe_id){
                 return rec
               } else {
-                return {...rec, reviews: rec.reviews.filter(rev => rev.id !== action.payload.id) && swal("Review deleted!")}
+                return {...rec, reviews: rec.reviews.filter(rev => rev.id !== action.payload.id)}
               }
             })
         default:
@@ -62,13 +62,13 @@ const currentUserReducer=(oldState=null,action)=>{
             return action.payload
             case "FAVORITE":
             return oldState.favorites.map(fav=>fav.id).includes(action.payload.id) ?
-              oldState && swal("Cannot add this twice")
+              oldState 
             : 
             {...oldState, favorites: [...oldState.favorites, action.payload]}
 
             case "DELETE_FROM_FAVORITES":
-                return {...oldState, favorites: oldState.favorites.filter(recipe=>recipe.id !== action.payload.id)
-                && swal("Removed from your favorites!")}
+                return {...oldState, favorites: oldState.favorites.filter(recipe=>recipe.id !== action.payload.id)}
+               
             default:
                   return oldState
     }
@@ -85,10 +85,7 @@ const redirectReducer = (oldState = false, action) => {
     }
   }
   
-  
-
-
-    const rootReducer= combineReducers({
+      const rootReducer= combineReducers({
         recipes: recipeReducer,
         searchText: searchTextReducer,
         ingredients: ingredientReducer,

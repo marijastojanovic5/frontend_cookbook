@@ -20,9 +20,9 @@ class Login extends React.Component {
     }
 
     render(){
-        if (this.props.redirect) {
-            return <Redirect to="/usersprofile"/> 
-      } 
+         if (this.props.redirect) {
+             return <Redirect to="/usersprofile"/> 
+       } 
         return(
             <div className="bg-img">
             <div className="container-fluid login-container">
@@ -47,10 +47,10 @@ class Login extends React.Component {
         )
     }
 }
-const mapStateToProps=state=>({
-    user: state.user,
-    redirect: state.redirect,
-    favorites: state.favorites
+const mapStateToProps=store=>({
+    user: store.user,
+    redirect: store.redirect,
+    favorites: store.favorites
 })
 
 const mapDispatchToProps=dispatch=>{

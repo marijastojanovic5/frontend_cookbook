@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, withRouter } from "react-router-dom";
+import { BrowserRouter, Route, withRouter,Redirect,Switch } from "react-router-dom";
 import RecipeContainer from "./components/RecipeContainer";
 import RecipeDetailsPage from "./components/RecipeDetailsPage";
 import UsersProfile from "./components/UsersProfile"
@@ -10,8 +10,10 @@ import NavBar from './components/NavBar'
 import { connect } from "react-redux";
 import { fetchingRecipes, fetchingIngredients,login} from "./redux/actionCreators";
 class App extends React.Component {
+  state={
+    loading: true
+  }
 
-  
   componentDidMount() {
     this.props.fetchingRecipes()
     this.props.fetchingIngredients()
@@ -24,31 +26,40 @@ class App extends React.Component {
 
    }}).then(res=>res.json())
    .then(user => {
-     console.log(user)
-    // this.props.loginUser(user)
-})
+     console.log("What is this user in app",user)
+   // this.props.loginUser(user)
+  })
+//} //else {
+ // this.setState({ loading: false })
+
 }}
   render() {
     return (
       <div>
+       
         <BrowserRouter>
            <NavBar/> 
+           {!this.props.user ?  <Redirect to="/" /> :
+            <Switch> 
           <Route exact path="/" component={SignUp} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/recipes" component={RecipeContainer} />
           <Route exact path="/recipes/:id" component={RecipeDetailsPage} />
           <Route exact path="/addnewrecipe" component={RecipeForm} />
           <Route exact path="/usersprofile" component={UsersProfile}/>
+          </Switch> 
+  }
         </BrowserRouter>
+
+  
       </div>
     );
   }
 }
- const mapStateToProps=store=>({
-  user: store.user
-  
-  
-})
+ const mapStateToProps=store=>{
+   return{
+    user: store.user
+ }}
 
 const mapDispatchToProps = dispatch => ({
   fetchingRecipes: () => {
@@ -57,8 +68,8 @@ const mapDispatchToProps = dispatch => ({
   fetchingIngredients: () => {
     dispatch(fetchingIngredients())
   }
- // ,
- // loginUser: (user)=>{dispatch(login(user))}
+  ,
+  loginUser: (user)=>{dispatch(login(user))}
  
 
   

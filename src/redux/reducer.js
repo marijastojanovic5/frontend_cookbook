@@ -56,8 +56,9 @@ const addIngredientReducer=(oldState=[],action)=>{
     }
 }
 const currentUserReducer=(oldState=null,action)=>{
-    switch(action.type){
-        case "FETCHED_USER":
+  
+  switch(action.type){
+    case "FETCHED_USER":
             return action.payload
             case "FAVORITE":
             return oldState.favorites.map(fav=>fav.id).includes(action.payload.id) ?
@@ -68,9 +69,7 @@ const currentUserReducer=(oldState=null,action)=>{
             case "DELETE_FROM_FAVORITES":
                 return {...oldState, favorites: oldState.favorites.filter(recipe=>recipe.id !== action.payload.id)
                 && swal("Removed from your favorites!")}
-
-                
-                default:
+            default:
                   return oldState
     }
 }

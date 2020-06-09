@@ -16,6 +16,7 @@ function addIngredient(newIngredient){
     return {type: "ADD_INGREDIENT",payload: newIngredient}
 }
 function login(user){
+  
     return {type: "FETCHED_USER",payload: user}
 }
 function resetRedirect() {
@@ -172,8 +173,7 @@ function logginIn({username, password}){
         })
         .then(res=>res.json())
         .then(user=>{
-          console.log(user)
-          if (user.successful){
+           if (user.successful){
             localStorage.setItem("jwt",user.token)
             dispatch(login(user))
           }else{

@@ -20,9 +20,9 @@ class Login extends React.Component {
     }
 
     render(){
-         if (this.props.redirect) {
-             return <Redirect to="/usersprofile"/> 
-       } 
+    //       if (this.props.user) {
+    //       return <Redirect to="/usersprofile"/> 
+    // } 
         return(
             <div className="bg-img">
             <div className="container-fluid login-container">

@@ -3,10 +3,9 @@ import { connect } from "react-redux";
 import { withRouter, Link} from "react-router-dom";
 import {removeFavRecipe} from "../redux/actionCreators"
 const  UserProfilePage = props => {
-  console.log("user in user profile from the store",props.user)
   return (
     <div className="user-profile-div">
-      <h1>Welcome {props.user.username}!</h1>
+      <h1>Welcome {props.user.user.username}!</h1>
        <div className="profile-div">
       <img id ="avatar"src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" alt="avatar"/>
       <h3>{props.user.username}</h3>

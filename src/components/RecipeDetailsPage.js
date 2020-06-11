@@ -10,7 +10,8 @@ class RecipeDetails extends React.Component {
       <div className="recipe-details">
         <h3>{this.props.recipe.title}</h3>
         <h4>Ingredients:</h4>
-        {this.props.recipe.ingredients.map(ing => (
+        {!this.props.recipe.ingredients ? null: 
+        this.props.recipe.ingredients.map(ing => (
           <p>{ing.name} {ing.amount} {ing.unit}</p>
         ))}
         <img src={this.props.recipe.picture} alt="recipe" />

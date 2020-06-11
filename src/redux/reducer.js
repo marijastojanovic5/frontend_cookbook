@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux'
-//import swal from "sweetalert"
+import swal from "sweetalert"
 
 
 const recipeReducer = (oldState = [], action) => {
@@ -61,9 +61,9 @@ const currentUserReducer=(oldState=null,action)=>{
     case "FETCHED_USER":
             return action.payload
             case "FAVORITE":
-            return oldState.favorites.map(fav=>fav.id).includes(action.payload.id) ?
+            return oldState.favorites.map(fav=>fav.id).includes(action.payload.id) ? swal("Already added to your favorites!") &&
               oldState 
-            : 
+            : swal("Added to your favorites!") &&
             {...oldState, favorites: [...oldState.favorites, action.payload]}
 
             case "DELETE_FROM_FAVORITES":

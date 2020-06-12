@@ -46,6 +46,12 @@ function deletingReview(review){
   
   return {type: "DELETE_REVIEW",payload: review}
 }
+
+function updateUser(user){
+  
+  return {type: "UPDATE_USER", payload: user}
+}
+
 function deleteReview(review){
   
   return dispatch=>{
@@ -129,8 +135,7 @@ function favorite(recipe, user) {
           .then(res => res.json())
           .then(recipe => {
             
-             
-        dispatch(favoriteRecipe(recipe))
+          dispatch(favoriteRecipe(recipe))
       });
     };
   }
@@ -146,7 +151,8 @@ function signUp({firstName,lastName,username, password }){
         })
         .then(res=>res.json())
         .then(user=>{
-         dispatch(login(user))
+          //localStorage.setItem("jwt",user.token)
+          dispatch(login(user))
     })
     } 
 }
@@ -164,6 +170,22 @@ function addingRecipe({ title, cookTime, instructions, ingredients, picture, glu
       .then(recipe => {
         
        dispatch(addNewRecipe(recipe))
+      })
+    }
+  }
+
+  function addUserData(userData,user){
+    return dispatch=>{
+      fetch(`http://localhost:3000/users/${user.id}` , {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        }, 
+        body: JSON.stringify({bio: userData.bio, picture: userData.picture}),
+        }).then(res => res.json())
+        .then(user => {
+         dispatch(updateUser(user))
       })
     }
   }
@@ -190,4 +212,4 @@ function logginIn({username, password}){
      }
 }
 
-export {fetchingRecipes,fetchedRecipes,onSearch,fetchedIngredients,resetRedirect,fetchingIngredients, addIngredient,signUp,login,favoriteRecipe,favorite,logginIn,addNewRecipe,addingRecipe,deleteFavoriteRecipe,removeFavRecipe,createReview,addCreatedReview,deleteReview,deletingReview,logOutUser}
+export {fetchingRecipes,fetchedRecipes,onSearch,fetchedIngredients,resetRedirect,fetchingIngredients, addIngredient,signUp,login,favoriteRecipe,favorite,logginIn,addNewRecipe,addingRecipe,deleteFavoriteRecipe,removeFavRecipe,createReview,addCreatedReview,deleteReview,deletingReview,logOutUser,addUserData,updateUser}

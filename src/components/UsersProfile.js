@@ -8,9 +8,17 @@ const  UserProfilePage = props => {
       <h1>Welcome {props.user.user.username}!</h1>
        <div className="profile-div">
       <img id ="avatar"src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" alt="avatar"/>
+     <div>
+       <Link to ="/usersprofile/edit">Edit Profile</Link>
+     </div>
       <h3>{props.user.username}</h3>
-      <p>Bio:</p>
+      { !props.user.user.bio ? null : 
+      <div>
+      <p>Bio: {props.user.user.bio}</p>
       </div>
+}
+      </div>
+
       My Favorite Recipes:{" "}
       <div className="container-fluid">
         <div className="row">

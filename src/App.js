@@ -7,6 +7,7 @@ import RecipeForm from "./components/RecipeForm";
 import Login from "./components/login";
 import SignUp from "./components/SignUp";
 import NavBar from './components/NavBar'
+import ProfileForm from "./components/ProfileForm"
 import { connect } from "react-redux";
 import { fetchingRecipes, fetchingIngredients,login} from "./redux/actionCreators";
 class App extends React.Component {
@@ -40,6 +41,7 @@ class App extends React.Component {
           <Route exact path="/usersprofile" component={UsersProfile} />
           <Route exact path="/addnewrecipe" component={RecipeForm} />
           <Route exact path="/login" component={Login} />
+          <Route exact path ="/usersprofile/edit" component={ProfileForm}/>
          {this.props.user ?
            <Redirect to="/usersprofile"/>
          :

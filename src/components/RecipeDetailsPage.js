@@ -5,11 +5,11 @@ import ReviewForm from "./ReviewForm"
 import { withRouter } from "react-router-dom";
 class RecipeDetails extends React.Component {
   
+  
   render() {
       return !this.props.recipe ? null : (
       <div className="recipe-details">
         <h3>{this.props.recipe.title}</h3>
-        <h4>Ingredients:</h4>
         {!this.props.recipe.ingredients ? null: 
         this.props.recipe.ingredients.map(ing => (
           <p>{ing.name} {ing.amount} {ing.unit}</p>
@@ -23,7 +23,7 @@ class RecipeDetails extends React.Component {
           <p>Vegetarian: {this.props.recipe.vegetarian ? "Yes" : "No"}</p>
         </div>
         <h4>Instructions:</h4> <p>{this.props.recipe.instructions}</p>
-        <button onClick={()=>this.props.fav(this.props.recipe,this.props.user.user)}>Add to favorites</button>
+        <button onClick={()=>this.props.fav(this.props.recipe,this.props.user.user)} className="btn btn-primary btn-lg btn-block login-btn" id="submit">Add to favorites</button>
 
         <ReviewForm />
         {this.props.recipe.reviews

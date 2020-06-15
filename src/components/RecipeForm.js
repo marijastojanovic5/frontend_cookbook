@@ -20,12 +20,11 @@ class RecipeForm extends React.Component {
     copyState[e.target.name] = e.target.value;
     this.setState(copyState);
   };
-  allIngredientObjects = () => {
-    debugger;
-  };
+  
   ingredientsHandler = (e, ing) => {
     let selectedIng = ing.filter(ing => ing.name === e.target.value).pop()
     this.setState({ingredients: [...this.state.ingredients, selectedIng]});
+    
   };
   veganHandler = e => {
     let toggle = this.state.name ? true : false;
@@ -56,12 +55,16 @@ class RecipeForm extends React.Component {
           <h2>Add a new Recipe!</h2>
           <div className="added-ingredient-div">
             <h4>Added Ingredients:</h4>
+            <div className ="added">
               {this.state.ingredients.map(ing => (
-                <p>{ing.name}</p>
+                <ul>
+               <li >{ing.name}</li>
+               </ul>
               ))}
+              </div>
           </div>
           <div className="form-group">
-            <label>Recipe Title: </label>
+          
             <input
               className="form-control form-control-sm"
               type="text"
@@ -79,7 +82,7 @@ class RecipeForm extends React.Component {
                   {ing.name}
                 </option>
               ))}
-            </select>
+            </select><br/>
             <label>Cooktime: </label>
             <input
               className="form-control form-control-sm"
@@ -157,7 +160,7 @@ class RecipeForm extends React.Component {
             </div>
           </div>
           <div>
-            <button type="submit">Submit Recipe</button>
+            <button type="submit" className="btn btn-primary btn-lg btn-block login-btn" id="submit">Submit Recipe</button>
           
           </div>
         </form>

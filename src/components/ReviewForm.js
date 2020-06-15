@@ -32,23 +32,18 @@ class Review extends Component {
       <div>
         <form onSubmit={this.addCreatedReview}>
           <div className="form-group">
-            <label>Review Title: </label>
-            <input
-              className="form-control form-control-sm"
-              type="text"
-              name="title"
-              onChange={this.reviewTitleHandler}
-              placeholder="Recipe Title"
-              style={{ width: 200 }}
-            />
+           
+          <label>Rate a recipe: </label><br/>
+
             <select value={this.state.name} onChange={this.ratingHandler}>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
               <option value="4">4</option>
               <option value="5">5</option>
-            </select>
-            <label>Review: </label>
+            </select><br/>
+            <label>Leave a review: </label><br/>
+
             <textarea
               className="form-control"
               name="instructions"
@@ -57,7 +52,7 @@ class Review extends Component {
               rows="3"
               style={{ width: 200 }}
             ></textarea>
-            <button >Submit Review</button>
+            <button className="btn btn-primary btn-lg btn-block login-btn" id="submit">Submit Review</button>
           </div>
         </form>
       </div>

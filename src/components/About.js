@@ -5,7 +5,7 @@ const About = props => {
         <div className="about">
             <h1>About CookBook</h1>
             <p>Are you a food enthusiast? Love to cook? Try out recipes from all <br/>
-                around th world? Than this is a perfect app for you! Share and save<br/>
+                around the world? Than this is a perfect app for you! Share and save<br/>
                 your favorite recipes, test your culinary skills and show us the <br/>
                 picture
                 of your dish!

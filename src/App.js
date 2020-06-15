@@ -5,6 +5,7 @@ import RecipeDetailsPage from "./components/RecipeDetailsPage";
 import UsersProfile from "./components/UsersProfile"
 import RecipeForm from "./components/RecipeForm";
 import Login from "./components/login";
+import About from "./components/About";
 import SignUp from "./components/SignUp";
 import NavBar from './components/NavBar'
 import ProfileForm from "./components/ProfileForm"
@@ -40,6 +41,7 @@ class App extends React.Component {
           <Route exact path="/recipes" component={RecipeContainer} />
           <Route exact path="/usersprofile" component={UsersProfile} />
           <Route exact path="/addnewrecipe" component={RecipeForm} />
+          <Route exact path="/about" component={About} />
           <Route exact path="/login" component={Login} />
           <Route exact path ="/usersprofile/edit" component={ProfileForm}/>
          {this.props.user ?

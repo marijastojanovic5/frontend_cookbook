@@ -11,6 +11,29 @@ body {
   background-color: rgba(135,36,11,0.3);
 
 }
+.about {
+  margin-top: 7%;
+  color: #ccc;
+  text-align: center;
+}
+.about-created p{
+  font-size: 16px;
+  margin: 0%;
+
+}
+footer {
+  position: fixed;
+  bottom: 0%;
+  width: 100%;
+  border-top:  1px solid #ccc;
+}
+.about-created h6 {
+  padding-top: 10px;
+  font-size: 14px;
+}
+
+
+
 .card {
   margin-bottom: 20px;
   height: 300px;

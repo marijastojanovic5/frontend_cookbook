@@ -68,7 +68,8 @@ const currentUserReducer=(oldState=null,action)=>{
 
             case "DELETE_FROM_FAVORITES":
                 return {...oldState, favorites: oldState.favorites.filter(recipe=>recipe.id !== action.payload.id)}
-               
+            case "UPDATE_USER":
+              return action.payload 
             default:
                   return oldState
     }

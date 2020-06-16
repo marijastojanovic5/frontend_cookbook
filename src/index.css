@@ -127,12 +127,13 @@ li a {
   width: 200px;
   border-radius: 50px;
 }
-.added-ingredient-div {
-  margin-top: 20px;
-}
+
 #submit {
   width: 200px;
 
+}
+.added-ingredient-div {
+  margin-top: 20px;
 }
 #dietery p{
   margin-bottom: 1px;

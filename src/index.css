@@ -140,6 +140,18 @@ li a {
   width: 180px;
   
 }
+#remove {
+  width: 10%;
+  color: #CCC;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 5px;
+  background-color: #87240B;
+  border: none;
+  
+  
+
+}
 #review-div {
   border: 2px solid  #87240b;
   width: 40%;

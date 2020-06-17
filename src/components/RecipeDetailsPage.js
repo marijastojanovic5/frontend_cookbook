@@ -32,8 +32,8 @@ class RecipeDetails extends React.Component {
                 Rating: {rev.rating} / 5
                 <h4>{rev.review}</h4>
                 {rev.user_id === this.props.user.user.id ?
-                  <button onClick={() => this.props.deleteReview(rev)}>
-                    Remove
+                  <button  id="remove"  onClick={() => this.props.deleteReview(rev)}>
+                    x
                   </button> : null
                 }
               </div>

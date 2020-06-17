@@ -23,7 +23,7 @@ class RecipeDetails extends React.Component {
           <p>Vegetarian: {this.props.recipe.vegetarian ? "Yes" : "No"}</p>
         </div>
         <h4>Instructions:</h4> <p>{this.props.recipe.instructions}</p>
-        <button onClick={()=>this.props.fav(this.props.recipe,this.props.user.user)} className="btn btn-primary btn-lg btn-block login-btn" id="submit">Add to favorites</button>
+        <button onClick={()=>this.props.fav(this.props.recipe,this.props.user.user)} className="btn btn-primary btn-lg btn-block login-btn" id="add-fav">Add to favorites</button>
 
         <ReviewForm />
         {this.props.recipe.reviews

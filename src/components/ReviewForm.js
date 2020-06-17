@@ -45,7 +45,7 @@ class Review extends Component {
             <label>Leave a review: </label><br/>
 
             <textarea
-              className="form-control"
+              className="form-control review-textarea"
               name="instructions"
               onChange={this.reviewHandler}
               id="exampleFormControlTextarea1"

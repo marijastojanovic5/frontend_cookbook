@@ -94,13 +94,9 @@ class RecipeForm extends React.Component {
             />
             <label>Picture: </label>
             <input
-              className="form-control form-control-sm"
-              type="text"
-              name="picture"
+              type="file"
               onChange={this.recipeHandler}
-              placeholder="add image"
-              style={{ width: 200 }}
-            />
+            /><br/>
             <label>Instructions: </label>
             <textarea
               className="form-control"
@@ -160,7 +156,7 @@ class RecipeForm extends React.Component {
             </div>
           </div>
           <div>
-            <button type="submit" className="btn btn-primary btn-lg btn-block login-btn" id="submit">Submit Recipe</button>
+            <button type="submit" className="btn btn-primary btn-lg btn-block login-btn" id="submit-rec">Submit Recipe</button>
           
           </div>
         </form>

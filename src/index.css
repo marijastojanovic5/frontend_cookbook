@@ -92,6 +92,12 @@ ul {
   border-radius: 40%;
 
 }
+.review-textarea {
+  background-color:  rgba(12, 12, 12, 0.8)!important;
+  color: #cccc!important;
+  border-color: #87240b;
+
+}
 
 li {
   float: left;
@@ -129,6 +135,14 @@ li a {
 }
 
 #submit {
+  width: 200px;
+
+}
+#submit-rec {
+  width: 200px;
+
+}
+#add-fav {
   width: 200px;
 
 }

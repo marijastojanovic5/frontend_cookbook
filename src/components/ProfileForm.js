@@ -22,21 +22,21 @@ class ProfileForm extends Component {
   };
   render() {
     return (
-      <div>
+      <div className="profile-form">
         <form onSubmit={this.userDataSubmit}>
-          <h2>Add Picture!</h2>
           <div className="added-ingredient-div">
-            <h4>Add Picture:</h4>
+            <h3>Add Picture:</h3>
           </div>
           <div>
             <input type="file" onChange={this.addPicHandler} />
-            <h4>Add Bio:</h4>
+            <h3>Add Bio:</h3>
             <textarea
               placeholder="add bio here..."
               onChange={this.addBioHandler}
+              id="profile-bio"
             ></textarea>
           </div>
-          <button>Submit</button>
+          <button className="btn btn-primary btn-lg btn-block login-btn" id="submit-edit-profile">Submit</button>
         </form>
       </div>
     );

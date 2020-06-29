@@ -35,7 +35,10 @@ class App extends React.Component {
       <div>
        
           <BrowserRouter>
-          <NavBar/> 
+         {this.props.user ?
+            <Redirect to="/usersprofile" component={UsersProfile}/>  &&  <NavBar/> 
+         :
+         <Route exact path="/" component={SignUp} />}
           <Switch>
           <Route exact path="/recipes/:id" component={RecipeDetailsPage} />
           <Route exact path="/recipes" component={RecipeContainer} />
@@ -43,11 +46,8 @@ class App extends React.Component {
           <Route exact path="/addnewrecipe" component={RecipeForm} />
           <Route exact path="/about" component={About} />
           <Route exact path="/login" component={Login} />
-          <Route exact path ="/usersprofile/edit" component={ProfileForm}/>
-         {this.props.user ?
-           <Redirect to="/usersprofile" component={UsersProfile}/>
-         :
-         <Route exact path="/" component={SignUp} />}
+          <Route exact path ="/usersprofile/edit" component={ProfileForm}/> 
+        
 
           </Switch>
         </BrowserRouter>

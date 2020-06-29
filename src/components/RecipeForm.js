@@ -9,7 +9,6 @@ class RecipeForm extends React.Component {
     cookTime: null,
     ingredients: [],
     instructions: "",
-    picture: "",
     gluten: false,
     dairy: false,
     vegetarian: false,

@@ -11,9 +11,7 @@ const NavBar =(props)=>{
               <li><Link to='/addnewrecipe'>Add new Recipe</Link></li>
               <li><Link to="/usersprofile">Profile</Link></li>
               {props.user ? <li><Link to="/login" onClick={props.logOutUser}>Log out</Link></li>: null }
-             
-
-             </ul>
+            </ul>
 
         </div>
     )

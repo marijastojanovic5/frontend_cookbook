@@ -28,7 +28,7 @@ class RecipeDetails extends React.Component {
         <ReviewForm />
         {this.props.recipe.reviews
           ? this.props.recipe.reviews.map(rev => (
-              <div id= "review-div">
+              <div id= "review-div" key ={rev.id}>
                 Rating: {rev.rating} / 5
                 <h4>{rev.review}</h4>
                 {rev.user_id === this.props.user.user.id ?

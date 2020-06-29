@@ -5,7 +5,7 @@ import { addUserData } from "../redux/actionCreators";
 class ProfileForm extends Component {
       
       state = {
-     bio: ""
+      bio: ""
       
     }
   

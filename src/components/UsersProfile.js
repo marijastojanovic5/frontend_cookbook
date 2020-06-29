@@ -24,7 +24,7 @@ const  UserProfilePage =(props)=> {
       <div className="container-fluid">
         <div className="row">
           {props.user.favorites.map(recipe => (
-            <div className="col-lg-2">
+            <div className="col-lg-2" key={recipe.id}>
               <div className="card">
                 <img
                   className="card-img-top"

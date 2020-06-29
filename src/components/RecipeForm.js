@@ -92,11 +92,7 @@ class RecipeForm extends React.Component {
               placeholder="cooktime"
               style={{ width: 200 }}
             />
-            <label>Picture: </label>
-            <input
-              type="file"
-              onChange={this.recipeHandler}
-            /><br/>
+           
             <label>Instructions: </label>
             <textarea
               className="form-control"

@@ -22,7 +22,7 @@ class RecipeDetails extends React.Component {
           <p>Vegan: {this.props.recipe.vegan ? "Yes" : "No"}</p>
           <p>Vegetarian: {this.props.recipe.vegetarian ? "Yes" : "No"}</p>
         </div>
-        <h4>Instructions:</h4> <p>{this.props.recipe.instructions}</p>
+        <h4>Instructions:</h4> <p>{!this.props.recipe.instructions ? "No instructions available" : this.props.recipe.instructions.replace(/(<li>|<ol>|<\/ol>|<\/li>)/g, '')}</p>
         <button onClick={()=>this.props.fav(this.props.recipe,this.props.user.user)} className="btn btn-primary btn-lg btn-block login-btn" id="add-fav">Add to favorites</button>
 
         <ReviewForm />

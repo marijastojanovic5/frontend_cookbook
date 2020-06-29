@@ -5,30 +5,27 @@ import { addUserData } from "../redux/actionCreators";
 class ProfileForm extends Component {
       
       state = {
-      picture: "",
-      bio: ""
-    
-  }
-  addPicHandler = e => {
-    this.setState({ picture: e.target.value });
-  };
+     bio: ""
+      
+    }
+  
   addBioHandler = e => {
     this.setState({ bio: e.target.value });
   };
   userDataSubmit = e => {
     e.preventDefault();
+    const form = new FormData()
+    form.append("picture", this.state.picture)
     this.props.onSubmit(this.state, this.props.user.user);
-    this.props.history.push("/userprofile");
+    this.props.history.push("/usersprofile");
   };
   render() {
     return (
       <div className="profile-form">
         <form onSubmit={this.userDataSubmit}>
           <div className="added-ingredient-div">
-            <h3>Add Picture:</h3>
           </div>
           <div>
-            <input type="file" onChange={this.addPicHandler} />
             <h3>Add Bio:</h3>
             <textarea
               placeholder="add bio here..."

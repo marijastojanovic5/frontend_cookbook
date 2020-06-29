@@ -182,7 +182,7 @@ function addingRecipe({ title, cookTime, instructions, ingredients, picture, glu
           "Content-Type": "application/json",
           Accept: "application/json"
         }, 
-        body: JSON.stringify({bio: userData.bio, picture: userData.picture}),
+       body: JSON.stringify({bio: userData.bio}),
         }).then(res => res.json())
         .then(user => {
          dispatch(updateUser(user))

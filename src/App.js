@@ -45,7 +45,7 @@ class App extends React.Component {
           <Route exact path="/login" component={Login} />
           <Route exact path ="/usersprofile/edit" component={ProfileForm}/>
          {this.props.user ?
-           <Redirect to="/usersprofile"/>
+           <Redirect to="/usersprofile" component={UsersProfile}/>
          :
          <Route exact path="/" component={SignUp} />}
 
